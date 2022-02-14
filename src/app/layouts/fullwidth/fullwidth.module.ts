@@ -1,0 +1,23 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FullwidthComponent } from './fullwidth.component';
+import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { LoginComponent } from '../../modules/login/login.component';
+import { SharedModule } from '../../shared/shared.module';
+import { ProductComponent } from '../../modules/product/product.component';
+
+@NgModule({
+  declarations: [
+    FullwidthComponent,
+    LoginComponent,
+    // ProductComponent
+  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FlexLayoutModule,
+    SharedModule
+  ]
+})
+export class FullwidthModule { }
