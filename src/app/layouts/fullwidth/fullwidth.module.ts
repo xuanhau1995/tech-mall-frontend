@@ -11,7 +11,6 @@ import { ProductComponent } from '../../modules/product/product.component';
   declarations: [
     FullwidthComponent,
     LoginComponent,
-    // ProductComponent
   ],
   imports: [
     CommonModule,

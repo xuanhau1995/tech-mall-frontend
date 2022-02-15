@@ -6,6 +6,7 @@ import { PostsComponent } from './modules/posts/posts.component';
 import { FullwidthComponent } from './layouts/fullwidth/fullwidth.component';
 import { LoginComponent } from './modules/login/login.component';
 import { ProductComponent } from './modules/product/product.component';
+import { CategoryComponent } from './modules/category/category.component';
 
 const routes: Routes = [{
   path: '',
@@ -17,6 +18,14 @@ const routes: Routes = [{
     path: 'posts',
     component: PostsComponent
   }, 
+  {
+    path: 'product',
+    component: ProductComponent
+  },
+  {
+    path: 'category',
+    component: CategoryComponent
+  }
  
 ]
 }, {
@@ -27,10 +36,14 @@ const routes: Routes = [{
       path: 'login',
       component: LoginComponent,
     },
-    {
-      path: 'product',
-      component: ProductComponent
-    }
+    // {
+    //   path: 'product',
+    //   component: ProductComponent
+    // },
+    // {
+    //   path: 'category',
+    //   component: CategoryComponent
+    // }
   ]
 }];
 

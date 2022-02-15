@@ -1,242 +1,776 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="grid grid-cols-12 pt-4 gap-6">
-      <div class="col-span-7">
+<div class="grid grid-cols-12 gap-6 relative">
+  <!-- Phone Preview  -->
+  <div class="col-span-5">
+    <div class="rounded-xl overflow-hidden group cursor-pointer sticky top-36">
+      <div class="relative bg-white">
         <div
-          class="border border-gray-100 py-6 rounded-xl overflow-hidden group cursor-pointer"
+          class="absolute top-[50%] h-12 w-8 bg-white rounded-tr-xl rounded-br-xl shadow-md flex justify-center items-center hover:scale-125 cursor-pointer transition-all duration-200 group-hover:shadow-xl"
         >
-          <div class="relative bg-white">
-            <div
-              class="absolute top-[50%] h-12 w-8 bg-white rounded-tr-xl rounded-br-xl shadow-md flex justify-center items-center hover:scale-125 cursor-pointer transition-all duration-200 group-hover:shadow-xl"
-            >
-              <i
-                class="fa-solid fa-chevron-left text-sm text-gray-400 group-hover:text-gray-600"
-              ></i>
-            </div>
-            <div
-              class="absolute top-[50%] right-0 h-12 w-8 bg-white rounded-tl-xl rounded-bl-xl shadow-md flex justify-center items-center hover:scale-125 cursor-pointer transition-all duration-200 group-hover:shadow-xl"
-            >
-              <i
-                class="fa-solid fa-chevron-right text-sm text-gray-400 group-hover:text-gray-600"
-              ></i>
-            </div>
-            <div class="flex justify-center h-[500px]">
-              <img src="assets/img/phone.png" alt="" />
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-4 pt-4 justify-center">
-            <div
-              class="border rounded-lg inline-flex items-center h-[60px] w-[60px] hover:border-red-500 cursor-pointer border-red-500 relative"
-            >
-              <i
-                class="fa-solid fa-circle-check text-red-500 absolute top-1 right-1 text-xs"
-              ></i>
-              <img src="assets/img/phone.png" alt="" class="h-[70%] px-3" />
-            </div>
-            <div
-              class="border rounded-lg inline-flex items-center h-[60px] w-[60px] px-3 hover:border-red-500 cursor-pointer"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[70%]" />
-            </div>
-            <div
-              class="border rounded-lg inline-flex items-center h-[60px] w-[60px] px-3 hover:border-red-500 cursor-pointer"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[70%]" />
-            </div>
-            <div
-              class="border rounded-lg inline-flex items-center h-[60px] w-[60px] px-3 hover:border-red-500 cursor-pointer"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[70%]" />
-            </div>
-            <div
-              class="border rounded-lg inline-flex items-center h-[60px] w-[60px] px-3 hover:border-red-500 cursor-pointer"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[70%]" />
-            </div>
-          </div>
+          <i
+            class="fa-solid fa-chevron-left text-sm text-gray-400 group-hover:text-gray-600"
+          ></i>
         </div>
-        <!-- Bao hanh  -->
-        <div class="flex justify-between pt-4">
-          <div class="space-y-2">
-            <div class="flex justify-center">
-              <img src="assets/img/shipping.svg" alt="" class="h-14 w-14" />
-            </div>
-            <h1 class="text-center font-semibold">FREE SHIPPING</h1>
-            <div class="w-[200px] text-xs text-gray-400 text-center">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </div>
-          </div>
-          <div class="space-y-2">
-            <div class="flex justify-center">
-              <img src="assets/img/refund.svg" alt="" class="h-14 w-14" />
-            </div>
-            <h1 class="text-center font-semibold">100% REFUND</h1>
-            <div class="w-[200px] text-xs text-gray-400 text-center">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </div>
-          </div>
-          <div class="space-y-2">
-            <div class="flex justify-center">
-              <img src="assets/img/support.svg" alt="" class="h-14 w-14" />
-            </div>
-            <h1 class="text-center font-semibold">SUPPORT 24/7</h1>
-            <div class="w-[200px] text-xs text-gray-400 text-center">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
-            </div>
-          </div>
+        <div
+          class="absolute top-[50%] right-0 h-12 w-8 bg-white rounded-tl-xl rounded-bl-xl shadow-md flex justify-center items-center hover:scale-125 cursor-pointer transition-all duration-200 group-hover:shadow-xl"
+        >
+          <i
+            class="fa-solid fa-chevron-right text-sm text-gray-400 group-hover:text-gray-600"
+          ></i>
         </div>
-        <!-- Description  -->
-        <div class="pt-4">
-          <div class="text-2xl pb-2">Thông tin sản phẩm</div>
-          Pin sạc dự phòng 10000mAh Type C PD QC3.0 Hydrus PB299S có kiểu dáng
-          nhỏ gọn, màu sắc nổi bật, in hình hổ đáng yêu • Hiệu suất sạc 60%
-          tương đương 6000 mAh, sạc được cho điện thoại iPhone 12 mini và iPhone
-          SE khoảng 2.5 lần. • Tích hợp cả 2 công nghệ Power Delivery và Quick
-          Charge 3.0 giúp các thiết bị sạc đầy nhanh chóng hơn. • Trang bị 2
-          cổng ra phổ biến Type-C (tối đa 20 W), USB (tối đa 18 W) và cho công
-          suất sạc nhanh tối đa là 15W khi sạc cùng lúc hai cổng. • Thiết kế nhỏ
-          gọn, đáng yêu với màu cam in hình thú độc đáo. • Có đèn LED dễ dàng
-          theo dõi dung lượng pin. • Sạc đầy cục sạc trong khoảng 5 đến 6 giờ
-          qua cổng Adapter 2A.
+        <div class="flex justify-center h-[700px]">
+          <img src="assets/img/phone.png" alt="" class="h-[96%]" />
         </div>
       </div>
 
-      <!-- Detail  -->
-      <div class="col-span-5 space-y-4">
-        <h2 class="text-xl font-medium text-gray-500 border-gray-100">
-          Laptop MSI Katana Gaming GF66 11UC i7 11800H/8GB/512GB/4GB
-          RTX3050/144Hz/Balo/Win10 (224VN)
-        </h2>
-
+      <div class="flex items-center space-x-4 pt-4 justify-center">
         <div
-          class="flex justify-between border rounded-2xl p-4 border-gray-100"
+          class="border rounded-lg inline-flex items-center h-[60px] w-[60px] hover:border-red-500 cursor-pointer border-red-500 relative"
         >
-          <div class="flex items-start">
-            <div class="">
-              <h1 class="font-semibold text-xl">10,000,000</h1>
-              <h1 class="line-through text-gray-300 text-sm">12,000,000</h1>
+          <i
+            class="fa-solid fa-circle-check text-red-500 absolute top-1 right-1 text-xs"
+          ></i>
+          <img src="assets/img/phone.png" alt="" class="h-[70%] px-3" />
+        </div>
+        <div
+          class="border rounded-lg inline-flex items-center h-[60px] w-[60px] px-3 hover:border-red-500 cursor-pointer"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[70%]" />
+        </div>
+        <div
+          class="border rounded-lg inline-flex items-center h-[60px] w-[60px] px-3 hover:border-red-500 cursor-pointer"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[70%]" />
+        </div>
+        <div
+          class="border rounded-lg inline-flex items-center h-[60px] w-[60px] px-3 hover:border-red-500 cursor-pointer"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[70%]" />
+        </div>
+        <div
+          class="border rounded-lg inline-flex items-center h-[60px] w-[60px] px-3 hover:border-red-500 cursor-pointer"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[70%]" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-span-5">
+    <div class="text-xl font-medium">
+      Samsung Galaxy S21 FE 5G Cell Phone, Factory Unlocked Android Smartphone,
+      128GB, 120Hz Display, Pro Grade Camera, All Day Intelligent Battery, US
+      Version, White
+    </div>
+    <div class="border-b border-gray-100 pb-2">
+      <div class="flex pt-4">
+        <div class="flex space-x-1 pr-4">
+          <i class="fa-solid fa-star text-red-500 text-xs"></i>
+          <i class="fa-solid fa-star text-red-500 text-xs"></i>
+          <i class="fa-solid fa-star text-red-500 text-xs"></i>
+          <i class="fa-solid fa-star text-red-500 text-xs"></i>
+        </div>
+        <span
+          class="text-xs text-sky-800 border-r pr-2 mr-2 hover:underline cursor-pointer"
+          >120 Ratings
+        </span>
+        <span class="text-xs text-sky-800 hover:underline cursor-pointer"
+          >883 answered questions</span
+        >
+      </div>
+    </div>
+    <div class="pt-3 space-y-1">
+      <div class="text-sm flex font-medium text-gray-500">
+        <div class="w-[70px]">List Price:</div>
+        <div class="pl-2 line-through">$699.99</div>
+      </div>
+      <div class="text-xs flex items-center font-medium text-gray-500">
+        <div class="w-[70px]">With Deal:</div>
+        <div class="pl-2 text-base text-red-600">$699.99</div>
+      </div>
+      <div class="text-xs flex items-center font-medium text-gray-500">
+        <div class="w-[70px]">You Save:</div>
+        <div class="pl-2 text-red-600">$100.00 (14%)</div>
+      </div>
+    </div>
+    <!-- Style  -->
+    <div class="text-xs font-medium pt-2 border-t mt-3 border-gray-100">
+      <div class="flex items-center">
+        <div class="text-gray-400 text-xs uppercase font-medium">Style:</div>
+        <div class="text-gray-900 pl-2">SE10</div>
+      </div>
+      <div class="flex space-x-2 pt-2">
+        <div
+          class="py-1 px-2 text-xs rounded-xl border inline-flex border-red-100 bg-red-50 text-red-500 cursor-pointer"
+        >
+          S20 FE
+        </div>
+        <div
+          class="py-1 px-2 text-xs rounded-xl border inline-flex cursor-pointer hover:border-red-100"
+        >
+          S20 FE
+        </div>
+      </div>
+    </div>
+    <!-- Color  -->
+    <div class="pt-4">
+      <h1 class="text-gray-400 text-xs uppercase font-medium">Color</h1>
+      <div class="pt-3 space-x-2 flex items-center">
+        <div
+          class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
+        >
+          <div class="h-4 w-4 rounded-full bg-red-500 mr-2"></div>
+          Red
+        </div>
+        <div
+          class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
+        >
+          <div class="h-4 w-4 rounded-full bg-gray-700 mr-2"></div>
+          Black
+        </div>
+        <div
+          class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
+        >
+          <div
+            class="h-4 w-4 rounded-full bg-white shadow-2xl border mr-2"
+          ></div>
+          White
+        </div>
+      </div>
+    </div>
+    <!-- Storage  -->
+    <div class="pt-4">
+      <div class="">
+        <h1 class="text-gray-400 text-xs uppercase font-medium">Storage/RAM</h1>
+        <div class="pt-3 space-x-2">
+          <div
+            class="h-[30px] items-center justify-center text-xs px-2 bg-red-50 rounded-full inline-flex border cursor-pointer border-red-600 text-red-600 font-medium"
+          >
+            4G RAM/128GB
+          </div>
+          <div
+            class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
+          >
+            8G RAM/528GB
+          </div>
+          <div
+            class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
+          >
+            16G RAM/1TB
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Offer  -->
+    <div class="border border-red-200 rounded-2xl overflow-hidden mt-4">
+      <div class="flex space-x-2 items-center pb-2 bg-red-50 pt-2 px-4">
+        <i class="fa-solid fa-gift text-pink-500"></i>
+        <div class="text-sm text-pink-500">Offer</div>
+      </div>
+      <div class="p-4 space-y-3">
+        <div class="flex items-center space-x-2">
+          <div
+            class="h-5 w-5 flex justify-center items-center rounded-full bg-red-50 text-red-500 text-xs"
+          >
+            1
+          </div>
+          <div class="text-xs">
+            Tặng mã ưu đãi quà tặng Galaxy trị giá đến 500,000đ khi đăng ký
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div
+            class="h-5 w-5 flex justify-center items-center rounded-full bg-red-50 text-red-500 text-xs"
+          >
+            2
+          </div>
+          <div class="text-xs">
+            Tặng mã ưu đãi quà tặng Galaxy trị giá đến 500,000đ khi đăng ký
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Thong So  -->
+    <div
+      class="text-[13px] pt-3 border-b mb-3 pb-3 mt-3 border-gray-100 space-y-3"
+    >
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Model Name</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Wireless Carrier</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Brand</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Form Factor</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Memory Storage Capacity</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Operating System</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Color</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Cellular Technology</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Included Components</div>
+        <div>S20FE</div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-[120px] font-semibold">Screen Size</div>
+        <div>S20FE</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="font-semibold">About this item</div>
+      <div>
+        <article class="prose prose-stone text-sm">
+          <ul>
+            <li>
+              Pro-Grade Camera: Features High-Powered Pro Lenses For Beautiful
+              Photographs In Any Light With 3X Optical Zoom
+            </li>
+            <li>
+              30X Space Zoom: Zoom In Close From Afar Or Magnify Details Of
+              Something Nearby With The Power Of 30X Space Zoom
+            </li>
+            <li>
+              Night Mode: Capture Crisp Images And Vibrant Videos With Night
+              Mode And Capture High-Quality Content In Low Light
+            </li>
+            <li>
+              Single-Take Ai: One Tap Of The Screen Captures Multiple Images And
+              Videos All At Once
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="col-span-2">
+    <div
+      class="border rounded-xl text-sm p-3 border-gray-100 shadow sticky top-36"
+    >
+      <div class="text-xl text-red-600 font-semibold">$400.00</div>
+      <div class="text-gray-500 pt-2">
+        No Import Fees Deposit & $28.60 Shipping to Vietnam
+        <button class="text-sky-800">Detail</button>
+      </div>
+      <div class="border-t pt-2 border-gray-100 mt-2">
+        Delivery <strong> Tuesday, March 29 </strong>
+      </div>
+      <div class="flex items-center space-x-2 pt-3">
+        <i class="fa-solid fa-location-dot text-gray-400"></i>
+        <div class="text-xs text-sky-700 cursor-pointer">
+          Deliver to District 2, HCM
+        </div>
+      </div>
+      <div
+        class="text-green-700 font-medium text-base pt-2 border-gray-100 border-t mt-2"
+      >
+        In Stock.
+      </div>
+      <div class="flex border rounded-xl p-2 justify-between px-3 mt-3">
+        <button>
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <div>Quantity: <strong>1</strong></div>
+        <button>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+      <div class="pt-6">
+        <button
+          class="h-[40px] w-full bg-gradient-to-r from-red-500 to-pink-500 rounded-full text-white uppercase hover:scale-105 transition-all duration-300"
+        >
+          Order
+        </button>
+        <button
+          class="w-full my-3 bg-red-50 text-red-500 h-[40px] rounded-full transition-all duration-300 flex items-center space-x-2 justify-center group"
+        >
+          <i class="fa-regular fa-heart"></i>
+          <span class="text-sm">Add to wish list </span>
+        </button>
+      </div>
+      <div class="">
+        <button class="text-sky-600 space-x-2">
+          <i class="fa-solid fa-lock"></i>
+          Secure transaction
+        </button>
+      </div>
+      <div
+        class="flex items-center text-xs font-light text-gray-600 space-x-2 pt-3"
+      >
+        <div>Ship from:</div>
+        <div>TeachMall.com</div>
+      </div>
+      <div class="border-t mt-3 pt-3">
+        <div>Accessories included</div>
+        <div class="pt-3">
+          <div class="flex items-start space-x-2 justify-between">
+            <input
+              type="checkbox"
+              class="rounded-md text-sky-600 border-gray-400 mt-1"
+            />
+            <div class="text-xs text-sky-700 flex-1">
+              Samsung Galaxy S21 FE 5G Clear Phone Cover
+            </div>
+            <div class="text-red-600 text-xs font-semibold">$23.00</div>
+          </div>
+          <div class="flex items-start space-x-2 justify-between mt-2">
+            <input
+              type="checkbox"
+              id="checkbox"
+              class="rounded-md text-sky-600 border-gray-400 mt-1"
+            />
+            <div class="text-xs text-sky-700 flex-1">
+              Samsung Galaxy S21 FE 5G Clear Phone Cover
+            </div>
+            <div class="text-red-600 text-xs font-semibold">$23.00</div>
+          </div>
+          <div class="flex items-start space-x-2 justify-between mt-2">
+            <input
+              type="checkbox"
+              id="checkbox"
+              class="rounded-md text-sky-600 border-gray-400 mt-1"
+            />
+            <div class="text-xs text-sky-700 flex-1">
+              Samsung Galaxy S21 FE 5G Clear Phone Cover
+            </div>
+            <div class="text-red-600 text-xs font-semibold">$23.00</div>
+          </div>
+          <div class="flex items-start space-x-2 justify-between mt-2">
+            <input
+              type="checkbox"
+              id="checkbox"
+              class="rounded-md text-sky-600 border-gray-400 mt-1"
+            />
+            <div class="text-xs text-sky-700 flex-1">
+              Samsung Galaxy S21 FE 5G Clear Phone Cover
+            </div>
+            <div class="text-red-600 text-xs font-semibold">$23.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pt-10">
+  <div class="text-2xl text-red-600">Products related to this item</div>
+  <div
+    class="grid grid-cols-12 mt-6 border-t border-l relative overflow-hidden"
+  >
+    <div
+      class="absolute top-[50%] flex justify-center items-center h-12 w-8 cursor-pointer bg-white border-r border-t border-b shadow-xl rounded-tr-full rounded-br-full z-40 hover:scale-125 transition-all duration-200"
+    >
+      <i class="fa-solid fa-chevron-left text-sm"></i>
+    </div>
+    <div
+      class="absolute top-[50%] right-0 flex justify-center items-center h-12 w-8 cursor-pointer bg-white border-l border-r border-t border-b shadow-xl rounded-tl-full rounded-bl-full z-30 hover:scale-125 transition-all duration-200"
+    >
+      <i class="fa-solid fa-chevron-right pl-2 text-sm"></i>
+    </div>
+    <!-- Product  -->
+    <a routerLink="/product" class="col-span-2">
+      <div
+        class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
+      >
+        <div
+          class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
+        >
+          <div
+            class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
+          >
+            <i class="fa-solid fa-gift text-[10px]"></i>
+          </div>
+          <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
+        </div>
+        <div
+          class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+        </div>
+        <div class="space-y-2 pt-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="font-semibold text-sm">20,009,000</h2>
+              <div class="text-[12px] text-gray-400 line-through">
+                1,000,000
+              </div>
             </div>
             <div
-              class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px] mt-1 ml-2"
+              class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
             >
               20% Off
             </div>
           </div>
-          <div>
-            <span class="text-sm text-gray-400 pr-2">Price at:</span>
-            <span class="text-sm text-blue-500 font-semibold cursor-pointer"
-              >Ho Chi Minh</span
+          <div
+            class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
+          >
+            Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
+          </div>
+          <div class="flex space-x-1">
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <span class="text-xs font-light text-gray-500">120 </span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- Product  -->
+    <a routerLink="/product" class="col-span-2">
+      <div
+        class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
+      >
+        <div
+          class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
+        >
+          <div
+            class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
+          >
+            <i class="fa-solid fa-gift text-[10px]"></i>
+          </div>
+          <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
+        </div>
+        <div
+          class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+        </div>
+        <div class="space-y-2 pt-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="font-semibold text-sm">20,009,000</h2>
+              <div class="text-[12px] text-gray-400 line-through">
+                1,000,000
+              </div>
+            </div>
+            <div
+              class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
             >
-          </div>
-        </div>
-
-        <div class="flex space-x-4 border p-4 rounded-2xl border-gray-100">
-          <div class="border-r border-gray-100 pr-4">
-            <h1 class="text-gray-400 text-sm uppercase">Storage</h1>
-            <div class="pt-2 space-x-2">
-              <div
-                class="h-[30px] items-center justify-center text-xs px-2 bg-red-50 rounded-full inline-flex border cursor-pointer border-red-600 text-red-600 font-medium"
-              >
-                128GB
-              </div>
-              <div
-                class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
-              >
-                528GB
-              </div>
-              <div
-                class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
-              >
-                1TB
-              </div>
+              20% Off
             </div>
-          </div>
-          <div class="">
-            <h1 class="text-gray-400 text-sm uppercase">Color</h1>
-            <div class="pt-2 space-x-2">
-              <div
-                class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
-              >
-                Red
-              </div>
-              <div
-                class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
-              >
-                Black
-              </div>
-              <div
-                class="h-[30px] items-center justify-center text-xs px-2 rounded-full inline-flex border cursor-pointer font-medium hover:border-red-600 hover:text-red-600"
-              >
-                White
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Delivery  -->
-        <div class="border border-gray-100 p-4 rounded-2xl">
-          <div class="text-sm uppercase text-green-500">Stocking</div>
-          <div class="flex items-center pt-2">
-            <i class="fa-solid fa-location-dot text-green-500"></i>
-            <div class="text-sm ml-2">Delivery to District 2, HCM City</div>
-            <button class="text-sm text-blue-500 ml-3">Change</button>
           </div>
           <div
-            class="text-xs font-medium text-gray-400 pt-2 border-t mt-3 border-gray-100 border-dashed"
+            class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
           >
-            Order now and it will be delivered directly to you between Wed. 16
-            Feb. and Thu. 17 Feb.
+            Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
+          </div>
+          <div class="flex space-x-1">
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <span class="text-xs font-light text-gray-500">120 </span>
           </div>
         </div>
-        <!-- Offer  -->
-        <div class="border border-red-200 rounded-2xl overflow-hidden">
-          <div class="flex space-x-2 items-center pb-2 bg-red-50 pt-2 px-4">
-            <i class="fa-solid fa-gift text-pink-500"></i>
-            <div class="text-sm text-pink-500">Offer</div>
+      </div>
+    </a>
+    <!-- Product  -->
+    <a routerLink="/product" class="col-span-2">
+      <div
+        class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
+      >
+        <div
+          class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
+        >
+          <div
+            class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
+          >
+            <i class="fa-solid fa-gift text-[10px]"></i>
           </div>
-          <div class="p-4">
-            <div class="flex items-center space-x-2">
-              <div
-                class="h-5 w-5 flex justify-center items-center rounded-full bg-red-50 text-red-500 text-xs"
-              >
-                1
-              </div>
-              <div class="text-xs">
-                Tặng mã ưu đãi quà tặng Galaxy trị giá đến 500,000đ khi đăng ký
-                thẻ Pearl Club
+          <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
+        </div>
+        <div
+          class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+        </div>
+        <div class="space-y-2 pt-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="font-semibold text-sm">20,009,000</h2>
+              <div class="text-[12px] text-gray-400 line-through">
+                1,000,000
               </div>
             </div>
+            <div
+              class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
+            >
+              20% Off
+            </div>
+          </div>
+          <div
+            class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
+          >
+            Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
+          </div>
+          <div class="flex space-x-1">
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <span class="text-xs font-light text-gray-500">120 </span>
           </div>
         </div>
-        <div>
-          <button
-            class="h-[40px] w-full bg-gradient-to-r from-red-500 to-pink-500 rounded-xl text-white uppercase hover:scale-105 transition-all duration-300"
+      </div>
+    </a>
+    <!-- Product  -->
+    <a routerLink="/product" class="col-span-2">
+      <div
+        class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
+      >
+        <div
+          class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
+        >
+          <div
+            class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
           >
-            Order
-          </button>
-          <button
-            class="w-full mt-4 hover:bg-red-50 hover:text-red-500 h-[40px] rounded-xl transition-all duration-300 flex items-center space-x-2 justify-center group"
-          >
-            <i class="fa-regular fa-heart"></i>
-            <span class="text-sm">Add to wish list </span>
-          </button>
+            <i class="fa-solid fa-gift text-[10px]"></i>
+          </div>
+          <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
         </div>
-        <!-- Cau hinh  -->
-        <div class="border p-4 rounded-xl">
-          <div>124</div>
+        <div
+          class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+        </div>
+        <div class="space-y-2 pt-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="font-semibold text-sm">20,009,000</h2>
+              <div class="text-[12px] text-gray-400 line-through">
+                1,000,000
+              </div>
+            </div>
+            <div
+              class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
+            >
+              20% Off
+            </div>
+          </div>
+          <div
+            class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
+          >
+            Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
+          </div>
+          <div class="flex space-x-1">
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <span class="text-xs font-light text-gray-500">120 </span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- Product  -->
+    <a routerLink="/product" class="col-span-2">
+      <div
+        class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
+      >
+        <div
+          class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
+        >
+          <div
+            class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
+          >
+            <i class="fa-solid fa-gift text-[10px]"></i>
+          </div>
+          <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
+        </div>
+        <div
+          class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+        </div>
+        <div class="space-y-2 pt-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="font-semibold text-sm">20,009,000</h2>
+              <div class="text-[12px] text-gray-400 line-through">
+                1,000,000
+              </div>
+            </div>
+            <div
+              class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
+            >
+              20% Off
+            </div>
+          </div>
+          <div
+            class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
+          >
+            Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
+          </div>
+          <div class="flex space-x-1">
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <span class="text-xs font-light text-gray-500">120 </span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- Product  -->
+    <a routerLink="/product" class="col-span-2">
+      <div
+        class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
+      >
+        <div
+          class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
+        >
+          <div
+            class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
+          >
+            <i class="fa-solid fa-gift text-[10px]"></i>
+          </div>
+          <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
+        </div>
+        <div
+          class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
+        >
+          <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+        </div>
+        <div class="space-y-2 pt-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="font-semibold text-sm">20,009,000</h2>
+              <div class="text-[12px] text-gray-400 line-through">
+                1,000,000
+              </div>
+            </div>
+            <div
+              class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
+            >
+              20% Off
+            </div>
+          </div>
+          <div
+            class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
+          >
+            Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
+          </div>
+          <div class="flex space-x-1">
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <i class="fa-solid fa-star text-red-500 text-xs"></i>
+            <span class="text-xs font-light text-gray-500">120 </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- //   Product Description-->
+<div class="grid grid-cols-12 gap-6 pt-10">
+  <div class="col-span-8">
+    <div class="pt-4">Product Description</div>
+    <div class="border-t mt-4 pt-4">Comming soon ...</div>
+  </div>
+  <div class="col-span-4">
+    <div class="border rounded-xl overflow-hidden">
+      <div class="border-b p-4 bg-slate-50">Product information</div>
+      <div class="p-4 text-sm space-y-3">
+        <div class="flex justify-between">
+          <div class="">Item Weight</div>
+          <div
+            class="text-gray-500 border-b border-dashed border-gray-100 pb-3"
+          >
+            6.7 x 3.4 x 2.44 inches
+          </div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">ASIN</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Item model number</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Batteries</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Customer Reviews</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Best Sellers Rank</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">OS</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">RAM</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Wireless communication technologies</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Connectivity technologies</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Display technology</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Other display features</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
+        </div>
+        <div
+          class="flex justify-between border-b border-dashed border-gray-100 pb-3"
+        >
+          <div class="">Device interface - primary</div>
+          <div class="text-gray-500">6.7 x 3.4 x 2.44 inches</div>
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>

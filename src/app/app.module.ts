@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { DefaultModule } from './layouts/default/default.module';
 import { FullwidthModule } from './layouts/fullwidth/fullwidth.module';
 import { ProductComponent } from './modules/product/product.component';
+import { CategoryComponent } from './modules/category/category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
