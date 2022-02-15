@@ -23,6 +23,7 @@
     "@fortawesome/fontawesome-free": "^6.0.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/line-clamp": "^0.3.1",
+    "caniuse-lite": "^1.0.30001303",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
