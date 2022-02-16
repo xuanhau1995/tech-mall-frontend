@@ -1,7 +1,7 @@
 <header>
   <div class="z-50 bg-white sticky top-0">
     <div
-      class="px-[120px] h-[72px] flex items-center justify-between space-x-3 border-b w-full"
+      class="px-[80px] h-[72px] flex items-center justify-between space-x-3 border-b w-full"
     >
       <a routerLink="/">
         <img src="assets/img/logo-red.svg" alt="" class="h-6 cursor-pointer" />
@@ -53,23 +53,25 @@
           <div class="font-semibold text-sm">& Order</div>
         </div>
       </div>
-      <div
-        class="flex items-center h-[40px] border border-white hover:border-gray-300 px-2 rounded-md cursor-pointer"
-      >
-        <div class="relative h-full flex items-center">
-          <div
-            class="h-4 w-4 bg-red-500 rounded-full flex items-center justify-center text-white absolute top-0 text-[10px] left-[30%] border border-white"
-          >
-            2
+      <a routerLink="/cart">
+        <div
+          class="flex items-center h-[40px] border border-white hover:border-gray-300 px-2 rounded-md cursor-pointer"
+        >
+          <div class="relative h-full flex items-center">
+            <div
+              class="h-4 w-4 bg-red-500 rounded-full flex items-center justify-center text-white absolute top-0 text-[10px] left-[30%] border border-white"
+            >
+              2
+            </div>
+            <i class="fa-solid fa-cart-shopping text-2xl"></i>
           </div>
-          <i class="fa-solid fa-cart-shopping text-2xl"></i>
+          <div class="text-sm pl-1 font-semibold">Cart</div>
         </div>
-        <div class="text-sm pl-1 font-semibold">Cart</div>
-      </div>
+      </a>
     </div>
     <!-- sub header  -->
     <div
-      class="flex h-[50px] items-center text-sm border-b px-[120px] justify-between w-full"
+      class="flex h-[50px] items-center text-sm border-b px-[80px] justify-between w-full"
     >
       <ul class="flex items-center space-x-6">
         <li class="text-gray-500 hover:text-gray-600">

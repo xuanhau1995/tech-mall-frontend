@@ -7,12 +7,14 @@ import { DefaultModule } from './layouts/default/default.module';
 import { FullwidthModule } from './layouts/fullwidth/fullwidth.module';
 import { ProductComponent } from './modules/product/product.component';
 import { CategoryComponent } from './modules/category/category.component';
+import { CartComponent } from './modules/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     CategoryComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

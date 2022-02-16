@@ -19,3 +19,7 @@ button {
 .shadow {
   box-shadow: rgba(149, 157, 165, 0.104) 0px 8px 24px !important;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
