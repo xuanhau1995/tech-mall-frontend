@@ -1,6 +1,6 @@
 <div class="py-[42px]">
   <div class="flex justify-between items-center">
-    <h2 class="text-2xl">Mobile Phones, Best Sales</h2>
+    <h2 class="text-2xl">{{ title }}</h2>
     <div>
       <button
         class="bg-slate-50 border rounded-lg h-[36px] px-3 uppercase text-xs font-light hover:scale-105 hover:shadow-lg transition-all duration-200"
@@ -10,17 +10,8 @@
     </div>
   </div>
   <div class="grid grid-cols-12 mt-6 border-t border-l z-0">
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
+    <div *ngFor="let product of listProducts" class="col-span-2">
+      <app-card-product [product]="product"></app-card-product>
+    </div>
   </div>
 </div>

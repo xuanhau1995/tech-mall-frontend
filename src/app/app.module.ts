@@ -8,6 +8,7 @@ import { FullwidthModule } from './layouts/fullwidth/fullwidth.module';
 import { ProductComponent } from './modules/product/product.component';
 import { CategoryComponent } from './modules/category/category.component';
 import { CartComponent } from './modules/cart/cart.component';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CartComponent } from './modules/cart/cart.component';
     AppRoutingModule,
     DefaultModule,
     FullwidthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

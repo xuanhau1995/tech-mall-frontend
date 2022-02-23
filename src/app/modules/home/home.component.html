@@ -1,10 +1,13 @@
 <div class="pb-10">
   <app-banner></app-banner>
-  <app-category-home></app-category-home>
-  <app-category-slider></app-category-slider>
+  <app-category-home
+    [title]="'Mobile Phones, Best Sales'"
+    [listProducts]="listProducts?.list_product"
+  ></app-category-home>
+  <!-- <app-category-slider></app-category-slider>
   <app-category-home-show-more></app-category-home-show-more>
   <div>
     Posts
     <div>Comming......</div>
-  </div>
+  </div> -->
 </div>

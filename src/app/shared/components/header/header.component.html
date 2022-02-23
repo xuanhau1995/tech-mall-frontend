@@ -74,35 +74,48 @@
       class="flex h-[50px] items-center text-sm border-b px-[80px] justify-between w-full"
     >
       <ul class="flex items-center space-x-6">
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category">Electronics</a>
-        </li>
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category"> SmartPhone</a>
-        </li>
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category">Tablets</a>
-        </li>
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category">Electronics</a>
-        </li>
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category"> Smart Watch</a>
-        </li>
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category">Computers</a>
-        </li>
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category">Smart Home</a>
-        </li>
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category">Devices</a>
-        </li>
-        <li class="text-gray-500 hover:text-gray-600">
-          <a routerLink="/category">Cables</a>
+        <li
+          *ngFor="let category of categories?.categoryList"
+          class="text-gray-500 hover:text-gray-600 relative group"
+        >
+          <a routerLink="/category">
+            <i
+              class="text-gray-500 mr-1"
+              [class]="
+                (category.slug === 'computers' && 'fa-solid fa-tv') ||
+                (category.slug === 'cell-phones' &&
+                  'fa-solid fa-mobile-screen-button') ||
+                (category.slug === 'electronics' &&
+                  'fa-solid fa-computer-mouse') ||
+                (category.slug === 'tablet' && 'fa-solid fa-tablet') ||
+                (category.slug === 'smart-watches' &&
+                  'fa-solid fa-watch-fitness') ||
+                (category.slug === 'smart-home' &&
+                  'fa-solid fa-house-laptop') ||
+                (category.slug === 'accessories' && 'fa-solid fa-keyboard')
+              "
+            ></i>
+            {{ category.name }}</a
+          >
+          <div
+            *ngIf="category.children.length > 0"
+            class="absolute top-4 hidden group-hover:flex cursor-pointer z-0"
+          >
+            <div
+              class="bg-white shadow-2xl border border-gray-100 rounded-xl p-4 mt-8"
+            >
+              <ul class="space-y-1">
+                <li
+                  *ngFor="let item of category.children"
+                  class="h-10 px-3 rounded-xl flex items-center hover:bg-slate-50 hover:text-sky-700 cursor-pointer"
+                >
+                  <a href="/" class="whitespace-nowrap">{{ item.name }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </li>
       </ul>
-
       <div
         class="border p-2 rounded-md text-red-500 font-semibold italic bg-red-50 border-red-500"
       >
