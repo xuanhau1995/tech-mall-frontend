@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CategoriesService } from '../../../service/categories.service';
 @Component({
   selector: 'app-header',
@@ -6,12 +6,15 @@ import { CategoriesService } from '../../../service/categories.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-categories: any
+  @Input() routerLink: string | any[]
+  categories: any
   constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
-    this.categoriesService.categories().subscribe(data => {
-      this.categories = data
+    this.categoriesService.categories().subscribe((data: any) => {
+      this.categories = data['data']
+      // console.log(this.categories)
+
     })
   }
 }

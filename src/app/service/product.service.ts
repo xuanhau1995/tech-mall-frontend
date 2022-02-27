@@ -4,11 +4,23 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
-baseUrl: string = 'https://tech-mall-api.herokuapp.com/api/user/'
-  constructor(private http: HttpClient) { 
-    
+  baseUrl = 'https://tech-mall-api-ver2.herokuapp.com/api/product'
+  // baseUrl = 'http://localhost:3000/api/product'
+  constructor(private http: HttpClient) {
+
   }
-  ListProducts(){
-   return this.http.get(this.baseUrl + 'list-products')
+
+  ListProducts() {
+    return this.http.get(this.baseUrl + '/list')
   }
+
+  DetailProduct(slug: any) {
+    return this.http.get(this.baseUrl + '/info/' + slug)
+  }
+
+  getProductsByCategoryId(parent: any) {
+    return this.http.get(this.baseUrl + '/listProduct/' + parent)
+  }
+
+
 }

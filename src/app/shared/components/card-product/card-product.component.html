@@ -1,8 +1,9 @@
-<a routerLink="/product">
+<a routerLink="/product/{{ product?.slug }}">
   <div
-    class="border-r border-b hover:shadow p-3 cursor-pointer group relative pb-8 card-product"
+    class="border-r border-gray-100 h-full hover:shadow p-3 cursor-pointer group relative pb-8 card-product"
   >
     <div
+      *ngIf="product?.best_seller; else elseBlock"
       class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
     >
       <div
@@ -10,18 +11,23 @@
       >
         <i class="fa-solid fa-gift text-[10px]"></i>
       </div>
-      <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
+      <div class="text-[10px] pl-1 pr-2 text-white">Best Seller</div>
     </div>
+    <ng-template #elseBlock>
+      <div class="h-[20px]"></div>
+    </ng-template>
     <div
-      class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
+      class="h-[200px] xl:h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
     >
-      <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+      <img [src]="product.img" alt="" class="h-[78%]" />
     </div>
     <div class="space-y-2 pt-2">
       <div class="flex justify-between items-start">
         <div>
-          <h2 class="font-semibold text-sm">20,009,000</h2>
-          <div class="text-[12px] text-gray-400 line-through">1,000,000</div>
+          <h2 class="font-semibold text-sm">{{ product.price_deals }}</h2>
+          <div class="text-[12px] text-gray-400 line-through">
+            {{ product.price_origin }}
+          </div>
         </div>
         <div
           class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"

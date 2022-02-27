@@ -1,7 +1,7 @@
 <header>
   <div class="z-50 bg-white sticky top-0">
     <div
-      class="px-[80px] h-[72px] flex items-center justify-between space-x-3 border-b w-full"
+      class="px-[16px] 2xl:px-[60px] h-[72px] flex items-center justify-between space-x-3 border-b w-full"
     >
       <a routerLink="/">
         <img src="assets/img/logo-red.svg" alt="" class="h-6 cursor-pointer" />
@@ -71,45 +71,72 @@
     </div>
     <!-- sub header  -->
     <div
-      class="flex h-[50px] items-center text-sm border-b px-[80px] justify-between w-full"
+      class="flex h-[50px] items-center text-sm border-b px-[16px] 2xl:px-[60px] justify-between w-full"
     >
       <ul class="flex items-center space-x-6">
         <li
-          *ngFor="let category of categories?.categoryList"
-          class="text-gray-500 hover:text-gray-600 relative group"
+          *ngFor="let category of categories"
+          class="text-gray-500 hover:text-gray-600 relative group cursor-pointer"
         >
-          <a routerLink="/category">
+          <div *ngIf="category.childs.length > 0; else elseBlock">
             <i
               class="text-gray-500 mr-1"
               [class]="
-                (category.slug === 'computers' && 'fa-solid fa-tv') ||
-                (category.slug === 'cell-phones' &&
+                (category?.slug === 'computers' && 'fa-solid fa-tv') ||
+                (category?.slug === 'cell-phones-accessories' &&
                   'fa-solid fa-mobile-screen-button') ||
-                (category.slug === 'electronics' &&
+                (category?.slug === 'electronics' &&
                   'fa-solid fa-computer-mouse') ||
-                (category.slug === 'tablet' && 'fa-solid fa-tablet') ||
-                (category.slug === 'smart-watches' &&
-                  'fa-solid fa-watch-fitness') ||
-                (category.slug === 'smart-home' &&
+                (category?.slug === 'tablets' && 'fa-solid fa-tablet') ||
+                (category?.slug === 'smart-watches' &&
                   'fa-solid fa-house-laptop') ||
-                (category.slug === 'accessories' && 'fa-solid fa-keyboard')
+                (category?.slug === 'smart-home' && 'fa-solid fa-house-laptop')
               "
             ></i>
-            {{ category.name }}</a
-          >
+            {{ category.name }}
+            <span *ngIf="category.childs.length > 0">
+              <i
+                class="fa-solid fa-chevron-down text-xs ml-2 group-hover:rotate-180 transition-all duration-300"
+              ></i>
+            </span>
+          </div>
+          <ng-template #elseBlock>
+            <a routerLink="/category/{{ category.slug }}">
+              <i
+                class="text-gray-500 mr-1"
+                [class]="
+                  (category?.slug === 'computers' && 'fa-solid fa-tv') ||
+                  (category?.slug === 'cell-phones-accessories' &&
+                    'fa-solid fa-mobile-screen-button') ||
+                  (category?.slug === 'electronics' &&
+                    'fa-solid fa-computer-mouse') ||
+                  (category?.slug === 'tablets' && 'fa-solid fa-tablet') ||
+                  (category?.slug === 'smart-watches' &&
+                    'fa-solid fa-swatchbook') ||
+                  (category?.slug === 'smart-home' &&
+                    'fa-solid fa-house-laptop')
+                "
+              ></i>
+              {{ category.name }}
+            </a>
+          </ng-template>
           <div
-            *ngIf="category.children.length > 0"
+            *ngIf="category.childs.length > 0"
             class="absolute top-4 hidden group-hover:flex cursor-pointer z-0"
           >
             <div
-              class="bg-white shadow-2xl border border-gray-100 rounded-xl p-4 mt-8"
+              class="bg-white shadow-2xl border border-gray-100 rounded-xl p-4 mt-6"
             >
               <ul class="space-y-1">
                 <li
-                  *ngFor="let item of category.children"
+                  *ngFor="let item of category.childs"
                   class="h-10 px-3 rounded-xl flex items-center hover:bg-slate-50 hover:text-sky-700 cursor-pointer"
                 >
-                  <a href="/" class="whitespace-nowrap">{{ item.name }}</a>
+                  <a
+                    routerLink="/category/{{ category.slug }}/{{ item.slug }}"
+                    class="whitespace-nowrap"
+                    >{{ item.name }}</a
+                  >
                 </li>
               </ul>
             </div>

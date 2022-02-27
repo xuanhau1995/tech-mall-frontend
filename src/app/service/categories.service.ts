@@ -5,11 +5,23 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CategoriesService {
-baseUrl: string = 'https://tech-mall-api.herokuapp.com/api/user/'
+  baseUrl = 'https://tech-mall-api-ver2.herokuapp.com/api/category'
+  // baseUrl = 'http://localhost:3000/api/category'
 
 
   constructor(private http: HttpClient) { }
-  categories(){
-   return this.http.get(this.baseUrl + 'list-category')
+  getAllCategories() {
+    return this.http.get(this.baseUrl + '/list')
+  }
+  categories() {
+    return this.http.get(this.baseUrl + '/aside')
+  }
+
+  getIdCategoryBySlug(slug: any) {
+    return this.http.get(this.baseUrl + "/getid/" + slug)
+  }
+
+  showDetailCategory(parent: any) {
+    return this.http.get(this.baseUrl + "/show-category/" + parent)
   }
 }

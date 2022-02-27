@@ -1,31 +1,40 @@
 <div class="pb-10">
   <div class="flex items-center justify-between">
-    <h2 class="text-3xl">Headphones & Headsets</h2>
+    <h2 class="text-3xl">{{ title }}</h2>
     <button
       class="bg-slate-50 border rounded-lg h-[36px] px-3 uppercase text-xs font-light hover:scale-105 hover:shadow-lg transition-all duration-200"
     >
       View All <i class="fa-solid fa-arrow-right text-xs"></i>
     </button>
   </div>
-
-  <div
-    class="grid grid-cols-12 mt-6 border-t border-l relative overflow-hidden"
-  >
-    <div
-      class="absolute top-[50%] flex justify-center items-center h-12 w-8 cursor-pointer bg-white border-r border-t border-b shadow-xl rounded-tr-full rounded-br-full z-40 hover:scale-125 transition-all duration-200"
-    >
-      <i class="fa-solid fa-chevron-left text-sm"></i>
+  <div *ngIf="!loading; else elseLoading">
+    <div class="grid grid-cols-12 mt-6 z-0 gap-4">
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
     </div>
-    <div
-      class="absolute top-[50%] right-0 flex justify-center items-center h-12 w-8 cursor-pointer bg-white border-l border-r border-t border-b shadow-xl rounded-tl-full rounded-bl-full z-30 hover:scale-125 transition-all duration-200"
-    >
-      <i class="fa-solid fa-chevron-right pl-2 text-sm"></i>
-    </div>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
-    <app-card-product class="col-span-2"></app-card-product>
   </div>
+  <ng-template #elseLoading>
+    <div
+      class="grid grid-cols-12 mt-6 border-t border-l border-b relative overflow-hidden border-gray-100"
+    >
+      <div
+        class="absolute top-[40%] flex justify-center items-center h-12 w-8 cursor-pointer bg-white border-r border-t border-b shadow-xl rounded-tr-full rounded-br-full z-40 hover:scale-125 transition-all duration-200"
+      >
+        <i class="fa-solid fa-chevron-left text-sm"></i>
+      </div>
+      <div
+        class="absolute top-[40%] right-0 flex justify-center items-center h-12 w-8 cursor-pointer bg-white border-l border-r border-t border-b shadow-xl rounded-tl-full rounded-bl-full z-30 hover:scale-125 transition-all duration-200"
+      >
+        <i class="fa-solid fa-chevron-right pl-2 text-sm"></i>
+      </div>
+
+      <div *ngFor="let product of listProducts?.slice(0, 6)" class="col-span-2">
+        <app-card-product [product]="product"></app-card-product>
+      </div>
+    </div>
+  </ng-template>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-category-slider',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-slider.component.scss']
 })
 export class CategorySliderComponent implements OnInit {
-
+  @Input() title: any
+  @Input() loading: Boolean
+  @Input() listProducts: any
   constructor() { }
 
   ngOnInit(): void {

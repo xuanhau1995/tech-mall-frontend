@@ -9,9 +9,23 @@
       </button>
     </div>
   </div>
-  <div class="grid grid-cols-12 mt-6 border-t border-l z-0">
-    <div *ngFor="let product of listProducts" class="col-span-2">
-      <app-card-product [product]="product"></app-card-product>
+  <div *ngIf="!loading; else elseLoading">
+    <div class="grid grid-cols-12 mt-6 z-0 gap-4">
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
+      <app-sketload class="col-span-2"> </app-sketload>
     </div>
   </div>
+  <ng-template #elseLoading>
+    <div
+      class="grid grid-cols-12 mt-6 border-t border-gray-100 border-l border-b z-0"
+    >
+      <div *ngFor="let product of listProducts?.slice(0, 6)" class="col-span-2">
+        <app-card-product [product]="product"></app-card-product>
+      </div>
+    </div>
+  </ng-template>
 </div>

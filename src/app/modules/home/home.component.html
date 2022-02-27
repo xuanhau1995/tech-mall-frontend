@@ -1,13 +1,24 @@
 <div class="pb-10">
   <app-banner></app-banner>
+
   <app-category-home
+    [loading]="loading"
     [title]="'Mobile Phones, Best Sales'"
-    [listProducts]="listProducts?.list_product"
+    [listProducts]="listProducts"
   ></app-category-home>
-  <!-- <app-category-slider></app-category-slider>
-  <app-category-home-show-more></app-category-home-show-more>
+
+  <app-category-slider
+    [title]="'Headphones & Headsets'"
+    [loading]="loading"
+    [listProducts]="listProductsFilter"
+  ></app-category-slider>
+  <app-category-home
+    [loading]="loading"
+    [title]="'Smart Watches'"
+    [listProducts]="listSmartWatch"
+  ></app-category-home>
   <div>
     Posts
     <div>Comming......</div>
-  </div> -->
+  </div>
 </div>

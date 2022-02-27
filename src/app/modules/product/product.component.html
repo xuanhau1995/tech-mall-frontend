@@ -18,7 +18,7 @@
           ></i>
         </div>
         <div class="flex justify-center h-[700px]">
-          <img src="assets/img/phone.png" alt="" class="h-[96%]" />
+          <img [src]="detailProduct?.img" alt="" class="h-[96%]" />
         </div>
       </div>
 
@@ -56,9 +56,7 @@
   </div>
   <div class="col-span-5">
     <div class="text-xl font-medium">
-      Samsung Galaxy S21 FE 5G Cell Phone, Factory Unlocked Android Smartphone,
-      128GB, 120Hz Display, Pro Grade Camera, All Day Intelligent Battery, US
-      Version, White
+      {{ detailProduct?.name }}
     </div>
     <div class="border-b border-gray-100 pb-2">
       <div class="flex pt-4">
@@ -70,21 +68,23 @@
         </div>
         <span
           class="text-xs text-sky-800 border-r pr-2 mr-2 hover:underline cursor-pointer"
-          >120 Ratings
+          >{{ detailProduct?.ratings }} Ratings
         </span>
         <span class="text-xs text-sky-800 hover:underline cursor-pointer"
-          >883 answered questions</span
+          >{{ detailProduct?.reviews }} Reviews</span
         >
       </div>
     </div>
     <div class="pt-3 space-y-1">
       <div class="text-sm flex font-medium text-gray-500">
         <div class="w-[70px]">List Price:</div>
-        <div class="pl-2 line-through">$699.99</div>
+        <div class="pl-2 line-through">{{ detailProduct?.price_origin }}</div>
       </div>
       <div class="text-xs flex items-center font-medium text-gray-500">
         <div class="w-[70px]">With Deal:</div>
-        <div class="pl-2 text-base text-red-600">$699.99</div>
+        <div class="pl-2 text-base text-red-600">
+          {{ detailProduct?.price_deals }}
+        </div>
       </div>
       <div class="text-xs flex items-center font-medium text-gray-500">
         <div class="w-[70px]">You Save:</div>
@@ -192,79 +192,86 @@
     <div
       class="text-[13px] pt-3 border-b mb-3 pb-3 mt-3 border-gray-100 space-y-3"
     >
-      <div class="flex items-center space-x-2">
+      <div
+        *ngIf="detailProduct?.model_name"
+        class="flex items-center space-x-2"
+      >
         <div class="w-[220px] font-semibold">Model Name</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.model_name }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div
+        *ngIf="detailProduct?.wireless_carrier"
+        class="flex items-center space-x-2"
+      >
         <div class="w-[220px] font-semibold">Wireless Carrier</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.wireless_carrier }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div *ngIf="detailProduct?.brand" class="flex items-center space-x-2">
         <div class="w-[220px] font-semibold">Brand</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.brand }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div
+        *ngIf="detailProduct?.form_factor"
+        class="flex items-center space-x-2"
+      >
         <div class="w-[220px] font-semibold">Form Factor</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.form_factor }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div
+        *ngIf="detailProduct?.memory_storage"
+        class="flex items-center space-x-2"
+      >
         <div class="w-[220px] font-semibold">Memory Storage Capacity</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.memory_storage }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div
+        *ngIf="detailProduct?.operating_system"
+        class="flex items-center space-x-2"
+      >
         <div class="w-[220px] font-semibold">Operating System</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.operating_system }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div *ngIf="detailProduct?.color" class="flex items-center space-x-2">
         <div class="w-[220px] font-semibold">Color</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.color }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div
+        *ngIf="detailProduct?.cellular_technology"
+        class="flex items-center space-x-2"
+      >
         <div class="w-[220px] font-semibold">Cellular Technology</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.cellular_technology }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div
+        *ngIf="detailProduct?.included_components"
+        class="flex items-center space-x-2"
+      >
         <div class="w-[220px] font-semibold">Included Components</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.included_components }}</div>
       </div>
-      <div class="flex items-center space-x-2">
+      <div
+        *ngIf="detailProduct?.screen_size"
+        class="flex items-center space-x-2"
+      >
         <div class="w-[220px] font-semibold">Screen Size</div>
-        <div>S20FE</div>
+        <div>{{ detailProduct?.screen_size }}</div>
       </div>
     </div>
 
     <div>
       <div class="font-semibold">About this item</div>
-      <div>
-        <article class="prose prose-stone text-sm">
-          <ul>
-            <li>
-              Pro-Grade Camera: Features High-Powered Pro Lenses For Beautiful
-              Photographs In Any Light With 3X Optical Zoom
-            </li>
-            <li>
-              30X Space Zoom: Zoom In Close From Afar Or Magnify Details Of
-              Something Nearby With The Power Of 30X Space Zoom
-            </li>
-            <li>
-              Night Mode: Capture Crisp Images And Vibrant Videos With Night
-              Mode And Capture High-Quality Content In Low Light
-            </li>
-            <li>
-              Single-Take Ai: One Tap Of The Screen Captures Multiple Images And
-              Videos All At Once
-            </li>
-          </ul>
-        </article>
-      </div>
+      <article class="prose prose-lg text-sm">
+        <div [innerHTML]="detailProduct?.description"></div>
+      </article>
     </div>
   </div>
   <div class="col-span-2">
     <div
       class="border rounded-xl text-sm p-3 border-gray-100 shadow sticky top-36"
     >
-      <div class="text-xl text-red-600 font-semibold">$400.00</div>
+      <div class="text-xl text-red-600 font-semibold">
+        {{ detailProduct?.price_deals }}
+      </div>
       <div class="text-gray-500 pt-2">
         No Import Fees Deposit & $28.60 Shipping to Vietnam
         <button class="text-sky-800">Detail</button>

@@ -1,30 +1,29 @@
-<div class="pt-4">
+<div class="">
   <!-- Hang  -->
-  <div class="grid grid-cols-12 gap-4">
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
-    <div class="h-10 bg-slate-50 col-span-1"></div>
+  <div class="grid grid-cols-12 gap-4 pb-4">
+    <div
+      *ngFor="let item of brands"
+      class="h-10 border border-gray-100 shadow rounded-xl flex items-center col-span-1"
+    >
+      <img [src]="item.img" alt="" />
+    </div>
   </div>
-  <div class="grid grid-cols-12 gap-6 pt-6 text-[13px]">
+  <div class="grid grid-cols-12 gap-6 text-[13px]">
     <!-- Filter  -->
     <div class="col-span-2">
       <div class="shadow border rounded-xl p-3 sticky top-36">
         <div class="space-y-1">
-          <div class="font-medium">Department</div>
-          <div class="font-medium pl-2">Cell Phones & Accessories</div>
-          <ul class="pl-4 space-y-1 text-gray-600">
-            <li>Cell Phones</li>
-            <li>Cell Phones</li>
-            <li>Cell Phones</li>
+          <div class="font-bold">Department</div>
+          <div class="font-medium pl-2">{{ parentName }}</div>
+          <ul class="pl-4 text-gray-600">
+            <li
+              *ngFor="let i of categories"
+              class="my-1 hover:text-gray-700 hover:font-semibold"
+            >
+              <a href="/category/{{ parent }}/{{ i.slug }}?filter=true">
+                {{ i.name }}
+              </a>
+            </li>
           </ul>
         </div>
         <!-- //  -->
@@ -75,7 +74,7 @@
         </div>
         <!-- //  -->
         <div>
-          <div class="font-medium pt-3 border-t border-gray-100 mt-3">
+          <div class="font-bold pt-3 border-t border-gray-100 mt-3">
             Featured Brands
           </div>
           <div class="pt-2 space-y-1">
@@ -155,8 +154,8 @@
 
     <!-- // all Product  -->
     <div class="col-span-10">
-      <div class="flex justify-between items-center">
-        <div class="text-xl font-semibold">All Phones</div>
+      <div class="flex justify-between items-center border-b pb-4">
+        <div class="text-xl font-semibold">All {{ parentName }}</div>
         <div>
           <div class="text-xs text-gray-500 pb-2">Sort by</div>
           <select
@@ -169,13 +168,18 @@
           </select>
         </div>
       </div>
-      <div class="grid grid-cols-12 border-l border-gray-100 border-t mt-4">
-        <!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
+      <div class="grid grid-cols-12 mt-4 gap-2">
+        <!-- Product  -->
+        <a
+          *ngFor="let item of listProduct"
+          routerLink="/product/{{ item.slug }}"
+          class="md:col-span-4 lg:col-span-3 xl:col-span-2 2xl:col-span-2"
+        >
           <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
+            class="border border-gray-100 rounded-xl hover:border-gray-300 p-3 cursor-pointer group relative pb-8 card-product"
           >
             <div
+              *ngIf="item?.best_seller; else elseBlock"
               class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
             >
               <div
@@ -183,19 +187,22 @@
               >
                 <i class="fa-solid fa-gift text-[10px]"></i>
               </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
+              <div class="text-[10px] pl-1 pr-2 text-white">Best Seller</div>
             </div>
+            <ng-template #elseBlock>
+              <div class="h-[20px]"></div>
+            </ng-template>
             <div
               class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
             >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+              <img [src]="item?.img" alt="" class="h-[78%]" />
             </div>
             <div class="space-y-2 pt-2">
               <div class="flex justify-between items-start">
                 <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
+                  <h2 class="font-semibold text-sm">{{ item.price_deals }}</h2>
                   <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
+                    {{ item.price_origin }}
                   </div>
                 </div>
                 <div
@@ -207,7 +214,7 @@
               <div
                 class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
               >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
+                {{ item?.name }}
               </div>
               <div class="flex space-x-1">
                 <i class="fa-solid fa-star text-red-500 text-xs"></i>
@@ -219,12 +226,16 @@
             </div>
           </div>
         </a>
-        <!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
+        <a
+          *ngFor="let item of listProductChild"
+          routerLink="/product/{{ item.slug }}"
+          class="md:col-span-4 lg:col-span-3 xl:col-span-2 2xl:col-span-2"
+        >
           <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
+            class="border border-gray-100 rounded-xl hover:border-gray-300 p-3 cursor-pointer group relative pb-8 card-product"
           >
             <div
+              *ngIf="item?.best_seller; else elseBlock"
               class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
             >
               <div
@@ -232,19 +243,22 @@
               >
                 <i class="fa-solid fa-gift text-[10px]"></i>
               </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
+              <div class="text-[10px] pl-1 pr-2 text-white">Best Seller</div>
             </div>
+            <ng-template #elseBlock>
+              <div class="h-[20px]"></div>
+            </ng-template>
             <div
               class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
             >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
+              <img [src]="item?.img" alt="" class="h-[78%]" />
             </div>
             <div class="space-y-2 pt-2">
               <div class="flex justify-between items-start">
                 <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
+                  <h2 class="font-semibold text-sm">{{ item.price_deals }}</h2>
                   <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
+                    {{ item.price_origin }}
                   </div>
                 </div>
                 <div
@@ -256,487 +270,7 @@
               <div
                 class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
               >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
-              </div>
-              <div class="flex space-x-1">
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <i class="fa-solid fa-star text-red-500 text-xs"></i>
-                <span class="text-xs font-light text-gray-500">120 </span>
-              </div>
-            </div>
-          </div> </a
-        ><!-- // Product  -->
-        <a routerLink="/product" class="col-span-2">
-          <div
-            class="border-r border-b hover:shadow-md p-3 cursor-pointer group relative pb-8 card-product"
-          >
-            <div
-              class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
-            >
-              <div
-                class="h-[20px] w-[20px] rounded-full bg-pink-400 flex justify-center items-center text-white"
-              >
-                <i class="fa-solid fa-gift text-[10px]"></i>
-              </div>
-              <div class="text-[10px] pl-1 pr-2 text-white">Best Sales</div>
-            </div>
-            <div
-              class="h-[250px] flex justify-center items-center group-hover:scale-105 duration-200 transition-all"
-            >
-              <img src="assets/img/phone.png" alt="" class="h-[78%]" />
-            </div>
-            <div class="space-y-2 pt-2">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h2 class="font-semibold text-sm">20,009,000</h2>
-                  <div class="text-[12px] text-gray-400 line-through">
-                    1,000,000
-                  </div>
-                </div>
-                <div
-                  class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
-                >
-                  20% Off
-                </div>
-              </div>
-              <div
-                class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
-              >
-                Samsung Galaxy S20fe 2021 6gb/128gb 6.5 ́ ́ Dual Sim Smartphone
+                {{ item?.name }}
               </div>
               <div class="flex space-x-1">
                 <i class="fa-solid fa-star text-red-500 text-xs"></i>
@@ -749,7 +283,10 @@
           </div>
         </a>
       </div>
-      <div class="pt-6">
+
+      <!-- <div *ngIf="!listProduct">Loading....</div>
+      <div *ngIf="listProduct.length < 0">Empty</div> -->
+      <div *ngIf="listProduct?.length > 10" class="pt-6">
         <button class="h-[40px] w-full bg-red-50 text-red-600 rounded-xl">
           Load More
         </button>

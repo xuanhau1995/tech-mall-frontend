@@ -11,6 +11,7 @@ import { CategorySliderComponent } from './components/category-slider/category-s
 import { CardProductComponent } from './components/card-product/card-product.component';
 import { CategoryHomeShowMoreComponent } from './components/category-home-show-more/category-home-show-more.component';
 import { PhonePreComponent } from './components/phone-pre/phone-pre.component';
+import { SketloadComponent } from './components/sketload/sketload.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -22,6 +23,7 @@ import { PhonePreComponent } from './components/phone-pre/phone-pre.component';
     CardProductComponent,
     CategoryHomeShowMoreComponent,
     PhonePreComponent,
+    SketloadComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { PhonePreComponent } from './components/phone-pre/phone-pre.component';
     CategoryHomeShowMoreComponent,
     CategorySliderComponent,
     PhonePreComponent,
+    SketloadComponent
   ]
 })
 export class SharedModule { }
