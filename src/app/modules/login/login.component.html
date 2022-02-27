@@ -1,1 +1,68 @@
-<h1>login works!</h1>
+<div class="flex justify-center">
+  <div class="w-[30%] pt-[30px]">
+    <a routerLink="/">
+      <img
+        src="assets/img/logo-red.svg"
+        alt=""
+        class="h-6 cursor-pointer flex mx-auto"
+      />
+    </a>
+    <div
+      class="w-full shadow rounded-xl border border-gray-100 px-8 py-10 mt-10"
+    >
+      <h2 class="text-xl font-medium uppercase">Login to TechMall</h2>
+      <div class="pt-4">
+        <h2 class="text-sm pb-1">Phone Number</h2>
+        <div
+          class="border rounded-lg border-slate-100 bg-slate-50 px-4 flex items-center"
+        >
+          <i class="fa-solid fa-phone"></i>
+          <input
+            type="text"
+            placeholder="Enter phone numbers"
+            class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300"
+          />
+        </div>
+
+        <h2 class="text-sm pb-1 pt-3">Password</h2>
+        <div
+          class="border rounded-lg border-slate-100 bg-slate-50 px-4 flex items-center"
+        >
+          <i class="fa-solid fa-lock"></i>
+          <input
+            type="text"
+            placeholder="Enter password"
+            class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300"
+          />
+        </div>
+        <div class="py-4 flex items-center">
+          <h2 class="text-sm text-slate-300">Forget password?</h2>
+          <button class="text-sm font-medium ml-2">Reset password</button>
+        </div>
+        <div class="pt-4">
+          <button
+            class="h-[40px] rounded-xl bg-red-500 w-full text-white uppercase"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+      <div class="pt-6">
+        <h2>Or login by</h2>
+      </div>
+    </div>
+    <div class="pt-4">
+      <div class="flex items-center justify-evenly pb-3">
+        <div class="border-t w-[100px]"></div>
+        <h1 class="italic text-xs">Do not have an account?</h1>
+        <div class="border-t w-[100px]"></div>
+      </div>
+
+      <button
+        class="text-sm font-medium ml-2 bg-slate-100 w-full rounded-xl h-[40px]"
+      >
+        Create Account
+      </button>
+    </div>
+  </div>
+</div>

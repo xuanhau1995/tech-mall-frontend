@@ -12,6 +12,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class ProductComponent implements OnInit {
   detailProduct: any
   slug: any
+  productId: any
+  relatedProduct: any
+  categoryId: any
   constructor(private router: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -22,8 +25,16 @@ export class ProductComponent implements OnInit {
       this.productService.DetailProduct(this.slug.split('.')[0])
         .subscribe((item: any) => {
           this.detailProduct = item['data'][0]
-          console.log(this.detailProduct)
+          this.productId = item['data'][0]._id
+          this.categoryId = item['data'][0].parent
+
+          // get Related Product
+          this.productService.getRelatedProduct(this.productId, this.categoryId).subscribe((data: any) => {
+            this.relatedProduct = data['data']
+            // console.log(this.relatedProduct)
+          })
         })
+
     })
   }
 }

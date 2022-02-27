@@ -20,6 +20,8 @@ export class CategoryComponent implements OnInit {
   categories: any
   listProductChild: any
   check: any
+  loading: Boolean = true
+  isEmpty: Boolean = false
   constructor(private router: ActivatedRoute, private categoryService: CategoriesService, private productService: ProductService, private brandService: BrandService) { }
 
   ngOnInit(): void {
@@ -43,9 +45,15 @@ export class CategoryComponent implements OnInit {
           if (this.check.params.parent !== this.check.params.slug) {
             this.productService.getProductsByCategoryId(this.categoryParentId)
               .subscribe((list: any) => {
+                this.loading = true
                 this.listProduct = list['data']
-                // console.log(this.listProduct)
+                this.loading = false
+
+                if (this.listProduct === undefined) {
+                  this.isEmpty = true
+                }
               })
+            console.log(typeof this.listProduct)
           }
 
 
@@ -70,12 +78,16 @@ export class CategoryComponent implements OnInit {
             // get product by categoryId
             this.productService.getProductsByCategoryId(this.categoryChildId)
               .subscribe((list: any) => {
+                this.loading = true
                 this.listProductChild = list['data']
-                // console.log(this.listProductChild)
+                this.loading = false
+
+                if (this.listProduct === undefined) {
+                  this.isEmpty = true
+                }
               })
           })
       }
-
     })
 
   }

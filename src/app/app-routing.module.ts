@@ -6,6 +6,7 @@ import { FullwidthComponent } from './layouts/fullwidth/fullwidth.component';
 import { ProductComponent } from './modules/product/product.component';
 import { CategoryComponent } from './modules/category/category.component';
 import { CartComponent } from './modules/cart/cart.component';
+import { LoginComponent } from './modules/login/login.component';
 
 const routes: Routes = [{
   path: '',
@@ -36,6 +37,10 @@ const routes: Routes = [{
   path: '',
   component: FullwidthComponent,
   children: [
+    {
+      path: 'login',
+      component: LoginComponent
+    }
     // {
     //   path: 'product',
     //   component: ProductComponent
@@ -48,7 +53,11 @@ const routes: Routes = [{
 }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,
+    {
+      scrollPositionRestoration: 'enabled', // Add options right here
+    }
+  )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

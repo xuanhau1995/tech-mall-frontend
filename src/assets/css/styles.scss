@@ -6,6 +6,7 @@
 
 body {
   font-family: 'Montserrat';
+
 }
 
 button {
@@ -22,4 +23,11 @@ button {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+
+@layer base {
+  body {
+    @apply text-sky-900
+  }
 }
