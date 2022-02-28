@@ -81,14 +81,16 @@
         <div
           class="pl-2"
           [ngClass]="
-            !detailProduct.price_deals ? 'text-xl text-red-500' : 'line-through'
+            !detailProduct?.price_deals
+              ? 'text-xl text-red-500'
+              : 'line-through'
           "
         >
           {{ detailProduct?.price_origin }}
         </div>
       </div>
       <div
-        *ngIf="detailProduct.price_deals"
+        *ngIf="detailProduct?.price_deals"
         class="text-xs flex items-center font-medium text-gray-500"
       >
         <div class="w-[70px]">With Deal:</div>
@@ -97,7 +99,7 @@
         </div>
       </div>
       <div
-        *ngIf="detailProduct.saves"
+        *ngIf="detailProduct?.saves"
         class="text-xs flex items-center font-medium text-gray-500"
       >
         <div class="w-[70px]">You Save:</div>
@@ -222,6 +224,28 @@
       <div *ngIf="detailProduct?.brand" class="flex items-center space-x-2">
         <div class="w-[220px] font-semibold">Brand</div>
         <div>{{ detailProduct?.brand }}</div>
+      </div>
+      <div
+        *ngIf="detailProduct?.compatible_phone_models"
+        class="flex items-center space-x-2 justify-around"
+      >
+        <div class="w-[220px] font-semibold flex flex-0 whitespace-nowrap">
+          Compatible Phone Models
+        </div>
+        <div class="flex flex-1 line-clamp-3">
+          {{ detailProduct?.compatible_phone_models }}
+        </div>
+      </div>
+      <div
+        *ngIf="detailProduct?.compatible_devices"
+        class="flex items-center space-x-2"
+      >
+        <div class="w-[220px] font-semibold flex flex-0">
+          Compatible Devices
+        </div>
+        <div class="flex-1 line-clamp-3 flex">
+          {{ detailProduct?.compatible_devices }}
+        </div>
       </div>
       <div
         *ngIf="detailProduct?.form_factor"
@@ -440,15 +464,15 @@
         <div class="space-y-2 pt-2">
           <div class="flex justify-between items-start">
             <div>
-              <h2 class="font-semibold text-sm">{{ item.price_deals }}</h2>
+              <h2 class="font-semibold text-sm">{{ item?.price_deals }}</h2>
               <div
                 [ngClass]="
-                  !item.price_deals
+                  !item?.price_deals
                     ? 'font-semibold text-sm'
                     : 'line-through text-[12px] text-gray-400'
                 "
               >
-                {{ item.price_origin }}
+                {{ item?.price_origin }}
               </div>
             </div>
             <div

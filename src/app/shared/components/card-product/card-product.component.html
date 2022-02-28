@@ -22,18 +22,28 @@
       <img [src]="product.img" alt="" class="h-[78%]" />
     </div>
     <div class="space-y-2 pt-2">
-      <div class="flex justify-between items-start">
+      <div class="flex justify-between items-start h-[36px]">
         <div>
-          <h2 class="font-semibold text-sm">{{ product.price_deals }}</h2>
-          <div class="text-[12px] text-gray-400 line-through">
+          <h2 class="font-semibold text-base">{{ product.price_deals }}</h2>
+          <div
+            [ngClass]="
+              !product.price_deals
+                ? 'text-base font-semibold'
+                : 'text-[12px] text-gray-400 line-through'
+            "
+          >
             {{ product.price_origin }}
           </div>
         </div>
         <div
+          *ngIf="product?.saves"
           class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
         >
-          20% Off
+          {{ product?.saves }}
         </div>
+        <!-- <ng-template #elseNoDeals>
+          <div>No Deals</div>
+        </ng-template> -->
       </div>
       <div
         class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
@@ -45,7 +55,9 @@
         <i class="fa-solid fa-star text-red-500 text-xs"></i>
         <i class="fa-solid fa-star text-red-500 text-xs"></i>
         <i class="fa-solid fa-star text-red-500 text-xs"></i>
-        <span class="text-xs font-light text-gray-500">120 </span>
+        <span class="text-xs font-light text-gray-500"
+          >{{ product?.ratings }}
+        </span>
       </div>
     </div>
   </div>

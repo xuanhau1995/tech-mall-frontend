@@ -212,12 +212,18 @@
                 <img [src]="item?.img" alt="" class="h-[78%]" />
               </div>
               <div class="space-y-2 pt-2">
-                <div class="flex justify-between items-start">
+                <div class="flex justify-between items-start h-[36px]">
                   <div>
-                    <h2 class="font-semibold text-sm">
+                    <h2 class="font-semibold text-base">
                       {{ item.price_deals }}
                     </h2>
-                    <div class="text-[12px] text-gray-400 line-through">
+                    <div
+                      [ngClass]="
+                        !item.price_deals
+                          ? 'font-semibold text-base'
+                          : 'line-through text-[12px] text-gray-400'
+                      "
+                    >
                       {{ item.price_origin }}
                     </div>
                   </div>
@@ -311,21 +317,21 @@
               </div>
             </div>
           </a>
+          <div
+            *ngIf="listProductChild === undefined && listProduct === undefined"
+            class="flex justify-center col-span-12"
+          >
+            <div class="text-center">
+              <i
+                class="fa-solid fa-triangle-exclamation text-4xl text-red-500"
+              ></i>
+              <h2 class="text-base italic">
+                There are currently no products for this category
+              </h2>
+            </div>
+          </div>
         </div>
       </ng-template>
-      <div
-        *ngIf="listProductChild === undefined"
-        class="flex justify-center col-span-12"
-      >
-        <div class="text-center">
-          <i class="fa-solid fa-triangle-exclamation text-4xl text-red-500"></i>
-          <h2 class="text-base italic">
-            There are currently no products for this category
-          </h2>
-        </div>
-      </div>
-      <!-- <div *ngIf="!listProduct">Loading....</div>
-      <div *ngIf="listProduct.length < 0">Empty</div> -->
       <div *ngIf="listProduct?.length > 10" class="pt-6">
         <button class="h-[40px] w-full bg-red-50 text-red-600 rounded-xl">
           Load More

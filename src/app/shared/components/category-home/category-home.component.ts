@@ -9,6 +9,7 @@ export class CategoryHomeComponent implements OnInit {
   @Input() title: any
   @Input() listProducts: any
   @Input() loading: any
+  @Input() link: any
   constructor() { }
 
   ngOnInit(): void {

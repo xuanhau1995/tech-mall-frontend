@@ -27,6 +27,7 @@ export class ProductComponent implements OnInit {
           this.detailProduct = item['data'][0]
           this.productId = item['data'][0]._id
           this.categoryId = item['data'][0].parent
+          console.log(this.detailProduct)
 
           // get Related Product
           this.productService.getRelatedProduct(this.productId, this.categoryId).subscribe((data: any) => {
