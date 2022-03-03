@@ -12,6 +12,7 @@ import { CardProductComponent } from './components/card-product/card-product.com
 import { CategoryHomeShowMoreComponent } from './components/category-home-show-more/category-home-show-more.component';
 import { PhonePreComponent } from './components/phone-pre/phone-pre.component';
 import { SketloadComponent } from './components/sketload/sketload.component';
+import { ChatComponent } from './components/chat/chat.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -24,6 +25,7 @@ import { SketloadComponent } from './components/sketload/sketload.component';
     CategoryHomeShowMoreComponent,
     PhonePreComponent,
     SketloadComponent,
+    ChatComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { SketloadComponent } from './components/sketload/sketload.component';
     CategoryHomeShowMoreComponent,
     CategorySliderComponent,
     PhonePreComponent,
-    SketloadComponent
+    SketloadComponent,
+    ChatComponent,
   ]
 })
 export class SharedModule { }

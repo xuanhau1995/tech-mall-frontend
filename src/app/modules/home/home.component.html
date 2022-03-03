@@ -1,26 +1,115 @@
 <div class="pb-10">
-  <app-banner></app-banner>
+  <app-banner class="-z-50"></app-banner>
 
-  <app-category-home
-    [loading]="loading"
-    [title]="'Mobile Phones, Best Sales'"
-    [listProducts]="listProducts"
-    [link]="linkCP"
-  ></app-category-home>
+  <div class="-mt-[120px] z-40">
+    <div
+      class="d-flex grid grid-cols-12 max-w-6xl mx-auto bg-white shadow z-40 rounded-2xl overflow-hidden p-4 gap-4"
+    >
+      <div
+        *ngFor="let item of listCategoryHome"
+        class="col-span-3 bg-white text-center cursor-pointer group rounded-2xl overflow-hidden"
+      >
+        <a [routerLink]="item.url">
+          <div class="h-[160px] overflow-hidden relative rounded-xl">
+            <img
+              [src]="item.img"
+              alt=""
+              class="object-cover w-full h-full absolute"
+            />
+          </div>
+          <div class="text-base pt-3">{{ item.name }}</div>
+        </a>
+      </div>
+    </div>
+    <app-category-home
+      [loading]="loading"
+      [title]="'Mobile Phones, Best Sales'"
+      [listProducts]="listProducts"
+      [link]="linkCP"
+      [addToCart]="addToCart"
+    ></app-category-home>
 
-  <app-category-slider
-    [title]="'Headphones & Headsets'"
-    [loading]="loading"
-    [listProducts]="listProductsFilter"
-  ></app-category-slider>
-  <app-category-home
-    [link]="linkSW"
-    [loading]="loading"
-    [title]="'Smart Watches'"
-    [listProducts]="listSmartWatch"
-  ></app-category-home>
-  <div>
-    Posts
-    <div>Comming......</div>
+    <app-category-slider
+      [title]="'Headphones & Headsets'"
+      [loading]="loading"
+      [listProducts]="listProductsFilter"
+    ></app-category-slider>
+    <app-category-home
+      [link]="linkSW"
+      [loading]="loading"
+      [title]="'Smart Watches'"
+      [listProducts]="listSmartWatch"
+    ></app-category-home>
+    <div>
+      <div class="text-2xl font-medium italic text-red-600">
+        Tech News Center
+      </div>
+      <div class="grid grid-cols-12 gap-6 pt-6">
+        <div class="col-span-7">
+          <div class="h-[400px] bg-white overflow-hidden rounded-xl">
+            <img
+              src="https://i0.wp.com/techbooky.business/wp-content/uploads/2022/03/123439545_ukraine_protest_paris_getty.jpg?w=976&ssl=1"
+              alt=""
+            />
+          </div>
+          <div class="pt-4 text-sm flex items-center space-x-2">
+            <div><i class="fa-solid fa-clock text-sm"></i> 20/02/202</div>
+            <span class="text-red-500">Tech Mall News</span>
+          </div>
+          <div class="py-2 text-2xl font-semibold">
+            Apple Products Are No Longer On Sale In Russia, As Sanctions Gather
+            Up Against The Country
+          </div>
+          <div class="text-sm line-clamp-2 text-slate-400">
+            As sanctions continue to pile up against Russia against its attack
+            on Russia, Apple has announced that it has stopped selling its
+            products through its Apple Stores in the country. Other businesses
+            of Western origin have taken similar actions as Russia continues its
+            attack on Ukraine. Businesses, banks, and global financial
+            institutions are cutting ties off with the country.
+          </div>
+        </div>
+        <div class="col-span-5 space-y-6">
+          <div *ngFor="let number of [0, 1, 2]" class="flex space-x-3">
+            <div
+              class="h-[200px] rounded-xl w-[260px] relative overflow-hidden flex flex-grow-0"
+            >
+              <img
+                src="https://i0.wp.com/techbooky.business/wp-content/uploads/2021/10/119644648_netflix.jpg?w=976&ssl=1"
+                alt=""
+                class="absolute h-full w-full top-0"
+              />
+            </div>
+            <div class="flex flex-1">
+              <div>
+                <div class="text-2xl">
+                  Netflix Acquires Next Games For $72 Million
+                </div>
+                <div class="line-clamp-2 text-sm font-light text-slate-400">
+                  As sanctions continue to pile up against Russia against its
+                  attack on Russia, Apple has announced that it has stopped
+                  selling its products through its Apple Stores in the country.
+                  Other businesses of Western origin have taken similar actions
+                  as Russia continues its attack on Ukraine. Businesses, banks,
+                  and global financial institutions are cutting ties off with
+                  the country.
+                </div>
+                <div class="pt-4 text-sm flex items-center space-x-2">
+                  <div><i class="fa-solid fa-clock text-sm"></i> 20/02/202</div>
+                  <span class="text-red-500">Tech Mall News</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center mt-6">
+    <button
+      class="h-[36px] w-[200px] bg-red-50 text-red-500 mx-auto rounded-full"
+    >
+      All News
+    </button>
   </div>
 </div>

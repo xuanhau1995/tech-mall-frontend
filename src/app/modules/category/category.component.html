@@ -214,27 +214,32 @@
               <div class="space-y-2 pt-2">
                 <div class="flex justify-between items-start h-[36px]">
                   <div>
-                    <h2 class="font-semibold text-base">
-                      {{ item.price_deals }}
+                    <h2
+                      *ngIf="item.price_deals"
+                      class="font-semibold text-base"
+                    >
+                      {{ item.price_deals | currency: "$ " }}
                     </h2>
                     <div
+                      *ngIf="item.price_origin"
                       [ngClass]="
                         !item.price_deals
                           ? 'font-semibold text-base'
                           : 'line-through text-[12px] text-gray-400'
                       "
                     >
-                      {{ item.price_origin }}
+                      {{ item.price_origin | currency: "$ " }}
                     </div>
                   </div>
                   <div
+                    *ngIf="item.saves"
                     class="items-center justify-center inline-flex rounded-full bg-red-100 font-semibold text-red-500 px-2 text-[11px] h-[20px]"
                   >
-                    20% Off
+                    {{ item.saves }}
                   </div>
                 </div>
                 <div
-                  class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
+                  class="text-sm line-clamp-2 font-medium group-hover:text-blue-500"
                 >
                   {{ item?.name }}
                 </div>
@@ -254,7 +259,7 @@
           <a
             *ngFor="let item of listProductChild"
             routerLink="/product/{{ item.slug }}"
-            class="md:col-span-4 lg:col-span-3 xl:col-span-2 2xl:col-span-3"
+            class="md:col-span-4 lg:col-span-3 xl:col-span-3 2xl:col-span-3"
           >
             <div
               class="border border-gray-100 rounded-xl hover:border-gray-300 p-3 cursor-pointer group relative pb-8 card-product h-[420px]"
@@ -281,17 +286,21 @@
               <div class="space-y-2 pt-2">
                 <div class="flex justify-between items-start">
                   <div>
-                    <h2 class="font-semibold text-base">
-                      {{ item.price_deals }}
+                    <h2
+                      *ngIf="item.price_deals"
+                      class="font-semibold text-base"
+                    >
+                      {{ item.price_deals | currency: "$ " }}
                     </h2>
                     <div
+                      *ngIf="item.price_origin"
                       [ngClass]="
                         !item.price_deals
                           ? 'font-semibold text-sm'
                           : 'line-through text-[12px] text-gray-400'
                       "
                     >
-                      {{ item.price_origin }}
+                      {{ item.price_origin | currency: "$ " }}
                     </div>
                   </div>
                   <div
@@ -301,7 +310,7 @@
                   </div>
                 </div>
                 <div
-                  class="text-sm line-clamp-2 font-medium text-gray-500 group-hover:text-blue-500"
+                  class="text-sm line-clamp-2 font-medium group-hover:text-blue-500"
                 >
                   {{ item?.name }}
                 </div>

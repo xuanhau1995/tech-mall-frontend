@@ -1,56 +1,60 @@
 <div class="flex justify-center">
-  <div class="w-[30%] pt-[30px]">
-    <a routerLink="/">
-      <img
-        src="assets/img/logo-red.svg"
-        alt=""
-        class="h-6 cursor-pointer flex mx-auto"
-      />
-    </a>
-    <div
-      class="w-full shadow rounded-xl border border-gray-100 px-8 py-10 mt-10"
-    >
+  <div class="w-[40%] 2xl:w-[30%]">
+    <div class="w-full shadow rounded-xl border border-gray-100 px-8 py-10">
       <h2 class="text-xl font-medium uppercase">Login to TechMall</h2>
-      <div class="pt-4">
-        <h2 class="text-sm pb-1">Phone Number</h2>
+      <div
+        *ngIf="isError"
+        class="border p-4 rounded-md text-center mt-4 text-sm bg-red-50 border-red-400 text-red-600"
+      >
+        <div class="flex items-center space-x-2">
+          <i class="fa-solid fa-circle-exclamation text-2xl"></i>
+          <div>{{ msgError }}</div>
+        </div>
+      </div>
+      <form class="pt-4" [formGroup]="formGroup" (ngSubmit)="login()">
+        <h2 class="text-xs font-semibold pb-1 pt-6">Email</h2>
         <div
           class="border rounded-lg border-slate-100 bg-slate-50 px-4 flex items-center"
         >
-          <i class="fa-solid fa-phone"></i>
+          <i class="fa-solid fa-user text-sm font-extralight"></i>
           <input
             type="text"
-            placeholder="Enter phone numbers"
-            class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300"
+            placeholder="Email"
+            class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300 text-sm font-extralight"
+            formControlName="email"
           />
         </div>
 
-        <h2 class="text-sm pb-1 pt-3">Password</h2>
+        <h2 class="text-xs font-semibold pb-1 pt-5">Password</h2>
         <div
           class="border rounded-lg border-slate-100 bg-slate-50 px-4 flex items-center"
         >
-          <i class="fa-solid fa-lock"></i>
+          <i class="fa-solid fa-lock text-sm font-extralight"></i>
           <input
-            type="text"
+            type="password"
             placeholder="Enter password"
-            class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300"
+            class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300 text-sm font-extralight"
+            formControlName="password"
           />
         </div>
         <div class="py-4 flex items-center">
-          <h2 class="text-sm text-slate-300">Forget password?</h2>
-          <button class="text-sm font-medium ml-2">Reset password</button>
+          <h2 class="text-xs text-slate-300">Forget password?</h2>
+          <button class="text-xs font-medium ml-2">Reset password</button>
         </div>
-        <div class="pt-4">
-          <button
-            class="h-[40px] rounded-xl bg-red-500 w-full text-white uppercase"
-          >
-            Login
-          </button>
-        </div>
-      </div>
+        <button
+          type="submit"
+          class="h-[40px] mt-6 rounded-full bg-gradient-to-r from-red-600 to-pink-600 w-full text-white uppercase"
+        >
+          Login
+        </button>
+      </form>
       <div class="pt-6">
-        <h2>Or login by</h2>
-        <div>
-          <button></button>
+        <h2 class="text-center pb-3">Or login by</h2>
+        <div class="space-x-2 text-center flex items-center justify-center">
+          <i class="fa-brands fa-facebook text-[26px] text-sky-500"></i>
+          <i class="fa-brands fa-twitter text-[26px] text-[#1DA1F2]"></i>
+          <i class="fa-brands fa-linkedin text-[26px] text-[#2867B2]"></i>
+          <i class="fa-brands fa-apple text-[26px] text-slate-900"></i>
         </div>
       </div>
     </div>
@@ -62,7 +66,8 @@
       </div>
 
       <button
-        class="text-sm font-medium ml-2 bg-slate-100 w-full rounded-xl h-[40px]"
+        class="text-sm font-medium ml-2 bg-slate-100 w-full rounded-full h-[40px]"
+        (click)="goToSignUp()"
       >
         Create Account
       </button>

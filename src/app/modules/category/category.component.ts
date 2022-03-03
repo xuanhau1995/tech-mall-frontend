@@ -32,7 +32,6 @@ export class CategoryComponent implements OnInit {
       this.parent = params.get('parent')
       this.child = params.get('slug')
       this.check = params
-      // console.log(this.check)
 
 
       // get id category by parent 
@@ -53,9 +52,7 @@ export class CategoryComponent implements OnInit {
                   this.isEmpty = true
                 }
               })
-            console.log(typeof this.listProduct)
           }
-
 
           // get brand 
           this.brandService.brand(this.categoryParentId).subscribe((data: any) => {
@@ -73,7 +70,6 @@ export class CategoryComponent implements OnInit {
         this.categoryService.getIdCategoryBySlug(this.child)
           .subscribe((item: any) => {
             this.categoryChildId = item['data']._id
-            // console.log('12', this.categoryChildId)
 
             // get product by categoryId
             this.productService.getProductsByCategoryId(this.categoryChildId)
@@ -81,7 +77,7 @@ export class CategoryComponent implements OnInit {
                 this.loading = true
                 this.listProductChild = list['data']
                 this.loading = false
-
+                // console.log(this.listProductChild)
                 if (this.listProduct === undefined) {
                   this.isEmpty = true
                 }

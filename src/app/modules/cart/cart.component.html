@@ -1,114 +1,72 @@
-<div class="grid grid-cols-12 gap-6">
-  <div class="col-span-9 border border-gray-100 rounded-xl overflow-hidden">
-    <div
-      class="border-b border-gray-100 p-4 justify-between flex items-end bg-slate-50"
-    >
-      <div class="text-xl text-sky-800">Shopping Cart</div>
-      <div class="text-sm">Price</div>
-    </div>
-    <div class="p-4">
-      <!-- <div class="pt-4 text-gray-400 text-sm text-center">
-        You are not any item!
-      </div> -->
-      <div class="space-y-6 pt-4">
-        <!-- //  -->
-        <div class="flex text-sm border-b border-gray-100 pb-4">
-          <img
-            src="https://m.media-amazon.com/images/I/613-P628I6L._AC_AA360_.jpg"
-            alt=""
-            class="h-[180px]"
-          />
-
-          <div class="space-y-1">
-            <div class="flex space-x-4">
-              <div class="text-sm font-medium">
-                Nokia XR20 5G | Android 11 | Unlocked Smartphone | Dual SIM | US
-                Version | 6/128GB | 6.67-Inch Screen | 48MP Dual Camera |
-                CharcoalNokia XR20 5G | Android 11 | Unlocked Smartphone | Dual
-                SIM | US Version | 6/128GB | 6.67-Inch Screen | 48MP Dual Camera
-                | Charcoal
-              </div>
-              <div class="text-xl font-semibold">$456.000</div>
-            </div>
-            <div class="text-xs text-green-800 font-semibold">In Stock</div>
-            <div class="text-xs font-semibold">
-              Style: <span class="font-normal text-gray-500">S20 FE</span>
-            </div>
-            <div class="text-xs font-semibold">
-              Color: <span class="font-normal text-gray-500">Cloud White</span>
-            </div>
-            <div class="text-xs font-semibold">
-              Size: <span class="font-normal text-gray-500">128GB</span>
-            </div>
-            <div class="flex items-center space-x-3 pt-2">
-              <button
-                class="h-7 w-7 flex justify-center items-center border rounded-lg shadow"
-              >
-                <i class="fa-solid fa-minus text-xs"></i>
-              </button>
-              <div>1</div>
-              <button
-                class="h-7 w-7 flex justify-center items-center border rounded-lg shadow"
-              >
-                <i class="fa-solid fa-plus text-xs"></i>
-              </button>
-              <div class="pl-3">
-                <button
-                  class="h-7 text-xs border rounded-xl px-3 bg-sky-50 text-sky-800 border-sky-100"
-                >
-                  Remove from cart
-                </button>
-              </div>
-            </div>
-          </div>
+<div class="grid grid-cols-12 gap-6 h-screen">
+  <div
+    [ngClass]="isLogined ? 'col-span-9' : 'col-span-12'"
+    [ngClass]="!listCart?.length ? 'col-span-12' : 'col-span-9'"
+  >
+    <div class="border border-gray-100 rounded-xl overflow-hidden">
+      <div
+        class="border-b border-gray-100 p-4 justify-between flex items-end bg-slate-50"
+      >
+        <div class="text-xl text-sky-800">Shopping Cart</div>
+        <div class="text-sm">Price</div>
+      </div>
+      <div class="p-4">
+        <div
+          *ngIf="!listCart?.length"
+          class="pt-4 text-gray-400 text-sm text-center"
+        >
+          You are not any item!
         </div>
-
-        <div class="flex text-sm">
-          <img
-            src="https://m.media-amazon.com/images/I/613-P628I6L._AC_AA360_.jpg"
-            alt=""
-            class="h-[180px]"
-          />
-
-          <div class="space-y-1">
-            <div class="flex space-x-4">
-              <div class="text-sm font-medium">
-                Nokia XR20 5G | Android 11 | Unlocked Smartphone | Dual SIM | US
-                Version | 6/128GB | 6.67-Inch Screen | 48MP Dual Camera |
-                CharcoalNokia XR20 5G | Android 11 | Unlocked Smartphone | Dual
-                SIM | US Version | 6/128GB | 6.67-Inch Screen | 48MP Dual Camera
-                | Charcoal
-              </div>
-              <div class="text-xl font-semibold">$456.000</div>
+        <div class="space-y-6 pt-4">
+          <div
+            *ngFor="let item of listCart; let i = index"
+            class="flex text-sm border-b border-gray-100 pb-4"
+          >
+            <div class="w-[220px] flex-0 flex">
+              <img [src]="item?.img" alt="" class="h-[180px] px-4" />
             </div>
-            <div class="text-xs text-green-800 font-semibold">In Stock</div>
-            <div class="text-xs font-semibold">
-              Style: <span class="font-normal text-gray-500">S20 FE</span>
-            </div>
-            <div class="text-xs font-semibold">
-              Color: <span class="font-normal text-gray-500">Cloud White</span>
-            </div>
-            <div class="text-xs font-semibold">
-              Size: <span class="font-normal text-gray-500">128GB</span>
-            </div>
-            <div class="flex items-center space-x-3 pt-2">
-              <button
-                class="h-7 w-7 flex justify-center items-center border rounded-lg shadow"
-              >
-                <i class="fa-solid fa-minus text-xs"></i>
-              </button>
-              <div>1</div>
-              <button
-                class="h-7 w-7 flex justify-center items-center border rounded-lg shadow"
-              >
-                <i class="fa-solid fa-plus text-xs"></i>
-              </button>
-              <div class="pl-3">
-                <button
-                  class="h-7 text-xs border rounded-xl px-3 bg-sky-50 text-sky-800 border-sky-100"
-                >
-                  Remove from cart
-                </button>
+            <div class="flex flex-1">
+              <div class="space-y-1 w-full">
+                <div class="flex space-x-4 justify-between w-full items-start">
+                  <div class="text-sm font-medium flex flex-grow-1">
+                    {{ item?.name }}
+                  </div>
+                  <div class="text-xl font-semibold ml-auto whitespace-nowrap">
+                    {{ item?.price | currency: "$ " }}
+                  </div>
+                </div>
+                <div class="text-xs text-green-800 font-semibold">In Stock</div>
+                <div class="text-xs font-semibold">
+                  Style: <span class="font-normal text-gray-500">S20 FE</span>
+                </div>
+                <div class="text-xs font-semibold">
+                  Color:
+                  <span class="font-normal text-gray-500">Cloud White</span>
+                </div>
+                <div class="text-xs font-semibold">
+                  Size: <span class="font-normal text-gray-500">128GB</span>
+                </div>
+                <div class="flex items-center space-x-3 pt-2">
+                  <button
+                    class="h-7 w-7 flex justify-center items-center border rounded-lg shadow"
+                  >
+                    <i class="fa-solid fa-minus text-xs"></i>
+                  </button>
+                  <div>1</div>
+                  <button
+                    class="h-7 w-7 flex justify-center items-center border rounded-lg shadow"
+                  >
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                  <div class="pl-3">
+                    <button
+                      class="h-7 text-xs border rounded-xl px-3 bg-sky-50 text-sky-800 border-sky-100 hover:shadow-xl transition-all duration-500 hover:border-sky-800"
+                      (click)="removeCart(item._id)"
+                    >
+                      Remove from cart
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -116,34 +74,45 @@
       </div>
     </div>
   </div>
-  <div class="col-span-3 text-sm">
-    <div class="border border-gray-100 shadow rounded-xl p-4">
-      <div>Subtotal (1 item): <strong> $499.99 </strong></div>
-      <button
-        class="h-[40px] px-4 rounded-xl bg-gradient-to-r from-red-600 to-pink-600 text-white w-full mt-6 hover:scale-105 transition-all duration-300"
-      >
-        Proceed to checkout
-      </button>
-    </div>
-    <div class="border border-gray-100 p-4 rounded-xl bg-white mt-6">
-      <div class="text-sm font-medium pb-4 border-b border-gray-100">
-        Your recently viewed items
+  <div
+    *ngIf="isLogined || !listCart?.length"
+    [ngClass]="isLogined ? 'col-span-3 text-sm' : ''"
+    [ngClass]="!listCart?.length ? 'hidden' : 'col-span-3'"
+    class=""
+  >
+    <div class="sticky top-32">
+      <div class="border border-gray-100 shadow rounded-xl p-4">
+        <div>
+          Subtotal ({{ subtotal }} item):
+          <strong> {{ totalPrice | currency: "$ " }}</strong>
+        </div>
+        <button
+          class="h-[40px] px-4 rounded-xl bg-gradient-to-r from-red-600 to-pink-600 text-white w-full mt-6 hover:scale-105 transition-all duration-300"
+          (click)="goToCheckOut()"
+        >
+          Proceed to checkout
+        </button>
       </div>
-      <div class="pt-4">
-        <div class="flex text-sm">
-          <img
-            src="https://m.media-amazon.com/images/I/613-P628I6L._AC_AA360_.jpg"
-            alt=""
-            class="h-[70px]"
-          />
-          <div>
-            <div class="text-sky-800 font-medium">Samsung Galaxy S21</div>
-            <div class="text-red-600">$56.00</div>
-            <button
-              class="py-1 px-4 rounded-md mt-2 text-red-600 bg-red-50 text-xs"
-            >
-              Add to cart
-            </button>
+      <div class="border border-gray-100 p-4 rounded-xl bg-white mt-6">
+        <div class="text-sm font-medium pb-4 border-b border-gray-100">
+          Your recently viewed items
+        </div>
+        <div class="pt-4">
+          <div class="flex text-sm">
+            <img
+              src="https://m.media-amazon.com/images/I/613-P628I6L._AC_AA360_.jpg"
+              alt=""
+              class="h-[70px]"
+            />
+            <div>
+              <div class="text-sky-800 font-medium">Samsung Galaxy S21</div>
+              <div class="text-red-600">$56.00</div>
+              <button
+                class="py-1 px-4 rounded-md mt-2 text-red-600 bg-red-50 text-xs"
+              >
+                Add to cart
+              </button>
+            </div>
           </div>
         </div>
       </div>

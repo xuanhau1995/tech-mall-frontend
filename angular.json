@@ -29,7 +29,8 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
-              "src/assets/css/styles.scss"
+              "src/assets/css/styles.scss",
+              "src/assets/css/toast.css"
             ],
             "scripts": []
           },
@@ -95,7 +96,8 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
-              "src/assets/css/styles.scss"
+              "src/assets/css/styles.scss",
+              "src/assets/css/toast.css"
             ],
             "scripts": []
           }

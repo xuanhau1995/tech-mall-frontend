@@ -1,0 +1,129 @@
+<div class="mx-auto w-full flex justify-center">
+  <div
+    class="w-[90%] lg:w-[40%] 2xl:w-[30%] bg-white shadow p-6 rounded-xl border border-gray-100"
+  >
+    <div class="text-2xl">Sign Up</div>
+    <form
+      action=""
+      class="pt-10"
+      [formGroup]="formGroup"
+      (ngSubmit)="submitSignUp()"
+    >
+      <h2 class="text-xs font-semibold pb-1">Full Name</h2>
+      <div
+        class="border rounded-lg bg-slate-50 flex items-center hover:border-slate-300"
+      >
+        <input
+          type="text"
+          placeholder="Full Name"
+          class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300 text-sm font-light"
+          formControlName="fullname"
+        />
+      </div>
+      <div *ngIf="isError">
+        <div class="text-red-600 text-[10px] font-light">
+          {{ msgErrorName }}
+        </div>
+      </div>
+      <h2 class="text-xs font-semibold pb-1 pt-4">Username</h2>
+      <div
+        class="border rounded-lg bg-slate-50 flex items-center hover:border-slate-300"
+      >
+        <input
+          type="text"
+          placeholder="UserName"
+          class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300 text-sm font-light"
+          formControlName="username"
+        />
+      </div>
+      <div *ngIf="isErrorUserName">
+        <div class="text-red-600 text-[10px] font-light">
+          {{ msgErrorUserName }}
+        </div>
+      </div>
+      <h2 class="text-xs pb-1 pt-4 font-semibold">Email</h2>
+      <div
+        class="border rounded-lg bg-slate-50 flex items-center hover:border-slate-300"
+      >
+        <input
+          type="email"
+          placeholder="Email"
+          class="border-transparent bg-transparent w-full text-sm focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300 font-light"
+          formControlName="email"
+        />
+      </div>
+      <div *ngIf="isErrorPhone">
+        <div class="text-red-600 text-[10px] font-light">
+          {{ msgErrorPhone }}
+        </div>
+      </div>
+      <h2 class="text-xs pb-1 pt-4 font-semibold">Phone Number</h2>
+      <div
+        class="border rounded-lg bg-slate-50 flex items-center hover:border-slate-300"
+      >
+        <input
+          type="number"
+          placeholder="Phone"
+          class="border-transparent bg-transparent w-full text-sm focus:border-0 focus:ring-0 border-0 placeholder:text-slate-300 font-light"
+          formControlName="phone"
+        />
+      </div>
+      <div *ngIf="isErrorEmail">
+        <div class="text-red-600 text-[10px] font-light">
+          {{ msgErrorEmail }}
+        </div>
+      </div>
+      <h2 class="text-xs pb-1 font-semibold pt-4">Password</h2>
+      <div
+        class="border rounded-lg bg-slate-50 flex items-center hover:border-slate-300"
+      >
+        <input
+          type="password"
+          placeholder="Password"
+          class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 text-sm border-0 placeholder:text-slate-300 font-light"
+          formControlName="password"
+        />
+      </div>
+      <div *ngIf="isErrorPass">
+        <div class="text-red-600 text-[10px] font-light">
+          {{ msgErrorPass }}
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 pt-2">
+        <i
+          class="fa-solid fa-info text-sky-800 text-xs"
+          [ngClass]="isErrorPass ? 'text-red-600' : ''"
+        ></i>
+        <div
+          class="text-[10px] font-light pt-[2px]"
+          [ngClass]="isErrorPass ? 'text-red-600' : ''"
+        >
+          Passwords must be at least 6 characters.
+        </div>
+      </div>
+
+      <h2 class="text-xs pb-1 font-semibold pt-4">Re-enter Password</h2>
+      <div
+        class="border rounded-lg bg-slate-50 flex items-center hover:border-slate-300"
+      >
+        <input
+          type="password"
+          placeholder="Re-enter Password"
+          class="border-transparent bg-transparent w-full focus:border-0 focus:ring-0 text-sm border-0 placeholder:text-slate-300 font-light"
+          formControlName="confirmPassword"
+        />
+      </div>
+      <div *ngIf="isErrorPassConfirm">
+        <div class="text-red-600 text-[10px] font-light">
+          {{ msgErrorConfirmPass }}
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="h-[36px] w-full rounded-full bg-gradient-to-r from-red-600 to-pink-600 text-white mt-6 mb-10"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

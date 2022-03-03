@@ -7,6 +7,9 @@ import { ProductComponent } from './modules/product/product.component';
 import { CategoryComponent } from './modules/category/category.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { LoginComponent } from './modules/login/login.component';
+import { ProfileComponent } from './modules/profile/profile.component';
+import { OrderComponent } from './modules/order/order.component';
+import { SignUpComponent } from './modules/sign-up/sign-up.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,6 +33,18 @@ const routes: Routes = [{
   {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'check-out',
+    component: OrderComponent
+  },
+  {
+    path: 'order/:id',
+    component: OrderComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 
   ]
@@ -40,6 +55,10 @@ const routes: Routes = [{
     {
       path: 'login',
       component: LoginComponent
+    },
+    {
+      path: 'sign-up',
+      component: SignUpComponent
     }
     // {
     //   path: 'product',

@@ -76,7 +76,10 @@
       </div>
     </div>
     <div class="pt-3 space-y-1">
-      <div class="text-sm flex font-medium text-gray-500 items-center">
+      <div
+        *ngIf="detailProduct?.price_origin"
+        class="text-sm flex font-medium text-gray-500 items-center"
+      >
         <div class="w-[70px]">List Price:</div>
         <div
           class="pl-2"
@@ -86,7 +89,7 @@
               : 'line-through'
           "
         >
-          {{ detailProduct?.price_origin }}
+          {{ detailProduct?.price_origin | currency: "$ " }}
         </div>
       </div>
       <div
@@ -95,7 +98,7 @@
       >
         <div class="w-[70px]">With Deal:</div>
         <div class="pl-2 text-base text-red-600">
-          {{ detailProduct?.price_deals }}
+          {{ detailProduct?.price_deals | currency: "$ " }}
         </div>
       </div>
       <div
@@ -313,7 +316,7 @@
       class="border rounded-xl text-sm p-3 border-gray-100 shadow sticky top-36"
     >
       <div class="text-xl text-red-600 font-semibold">
-        {{ detailProduct?.price_deals }}
+        {{ price | currency: "$ " }}
       </div>
       <div class="text-gray-500 pt-2">
         No Import Fees Deposit & $28.60 Shipping to Vietnam
@@ -333,27 +336,73 @@
       >
         In Stock.
       </div>
-      <div class="flex border rounded-xl p-2 justify-between px-3 mt-3">
-        <button>
+      <div
+        class="flex border rounded-xl p-2 justify-between px-3 mt-3 relative"
+      >
+        <button
+          [ngClass]="isDecrement ? 'text-gray-400 cursor-not-allowed' : ''"
+          (click)="decrement()"
+        >
           <i class="fa-solid fa-minus"></i>
         </button>
-        <div>Quantity: <strong>1</strong></div>
-        <button>
+        <div>
+          Quantity: <strong>{{ qty }}</strong>
+        </div>
+        <button (click)="increment()">
           <i class="fa-solid fa-plus"></i>
         </button>
+        <div
+          *ngIf="isMsgQty"
+          class="absolute top-11 z-50 bg-white rounded-lg shadow-xl p-4 right-0 border border-gray-100"
+        >
+          <div class="text-center">{{ msg }}</div>
+          <button
+            class="w-full bg-gray-200 rounded-full h-[30px] text-sm mt-3"
+            (click)="isMsgQty = false"
+          >
+            Close
+          </button>
+        </div>
       </div>
-      <div class="pt-6">
+      <div class="pt-6 relative">
         <button
           class="h-[40px] w-full bg-gradient-to-r from-red-500 to-pink-500 rounded-full text-white uppercase hover:scale-105 transition-all duration-300"
+          (click)="goToOrder()"
         >
           Order
         </button>
-        <button
-          class="w-full my-3 bg-red-50 text-red-500 h-[40px] rounded-full transition-all duration-300 flex items-center space-x-2 justify-center group"
-        >
-          <i class="fa-regular fa-heart"></i>
-          <span class="text-sm">Add to wish list </span>
-        </button>
+
+        <div class="relative">
+          <button
+            class="w-full my-3 bg-red-50 text-red-500 h-[40px] rounded-full transition-all duration-300 flex items-center space-x-2 justify-center group"
+            (click)="addToCart()"
+          >
+            <i
+              class="fa-regular fa-heart"
+              [ngClass]="
+                isAddToCart ? 'fa-solid fa-heart transition-all scale-110' : ''
+              "
+            ></i>
+            <span class="text-sm">{{
+              isAddToCart ? "Added to wish list" : "Add to wish list"
+            }}</span>
+          </button>
+          <div
+            *ngIf="isMsg"
+            class="absolute bg-slate-500 bg-opacity-10 backdrop-blur shadow-xl rounded-xl top-11 right-0 p-4 w-[300px]"
+          >
+            <div class="text-center font-medium">
+              You Need to login to add this Item to your Cart
+            </div>
+            <button
+              (click)="goToLogin()"
+              class="h-[36px] w-full px-4 rounded-full bg-slate-600 text-white mt-6"
+            >
+              Login Now
+            </button>
+            <button class="mt-4 w-full" (click)="closeMsg()">Close</button>
+          </div>
+        </div>
       </div>
       <div class="">
         <button class="text-sky-600 space-x-2">
@@ -464,15 +513,18 @@
         <div class="space-y-2 pt-2">
           <div class="flex justify-between items-start">
             <div>
-              <h2 class="font-semibold text-sm">{{ item?.price_deals }}</h2>
+              <h2 *ngIf="item?.price_deals" class="font-semibold text-sm">
+                {{ item?.price_deals | currency: "$ " }}
+              </h2>
               <div
+                *ngIf="item?.price_origin"
                 [ngClass]="
                   !item?.price_deals
                     ? 'font-semibold text-sm'
                     : 'line-through text-[12px] text-gray-400'
                 "
               >
-                {{ item?.price_origin }}
+                {{ item?.price_origin | currency: "$ " }}
               </div>
             </div>
             <div

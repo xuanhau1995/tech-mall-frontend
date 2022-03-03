@@ -1,7 +1,7 @@
-<a routerLink="/product/{{ product?.slug }}">
-  <div
-    class="border-r border-gray-100 h-full hover:shadow p-3 cursor-pointer group relative pb-8 card-product"
-  >
+<div
+  class="border-r group border-gray-100 h-full hover:shadow p-3 cursor-pointer group relative pb-8 card-product"
+>
+  <a routerLink="/product/{{ product?.slug }}">
     <div
       *ngIf="product?.best_seller; else elseBlock"
       class="bg-gradient-to-r from-red-500 to-pink-500 h-[20px] rounded-full inline-flex items-center"
@@ -24,15 +24,18 @@
     <div class="space-y-2 pt-2">
       <div class="flex justify-between items-start h-[36px]">
         <div>
-          <h2 class="font-semibold text-base">{{ product.price_deals }}</h2>
+          <h2 *ngIf="product.price_deals" class="font-semibold text-base">
+            {{ product.price_deals | currency: "$ " }}
+          </h2>
           <div
+            *ngIf="product.price_origin"
             [ngClass]="
               !product.price_deals
                 ? 'text-base font-semibold'
                 : 'text-[12px] text-gray-400 line-through'
             "
           >
-            {{ product.price_origin }}
+            {{ product.price_origin | currency: "$ " }}
           </div>
         </div>
         <div
@@ -50,7 +53,7 @@
       >
         {{ product.name }}
       </div>
-      <div class="flex space-x-1">
+      <div class="flex space-x-1 items-center">
         <i class="fa-solid fa-star text-red-500 text-xs"></i>
         <i class="fa-solid fa-star text-red-500 text-xs"></i>
         <i class="fa-solid fa-star text-red-500 text-xs"></i>
@@ -60,5 +63,16 @@
         </span>
       </div>
     </div>
+  </a>
+  <div
+    class="absolute group-hover:flex justify-center mx-auto w-full left-0 right-0 top-[40%] hidden z-50"
+  >
+    <button
+      class="bg-red-200 bg-opacity-20 backdrop-blur-sm text-red-500 rounded-full text-xs px-4 h-[32px]"
+      (click)="addToCart(product)"
+    >
+      <i class="fa-solid fa-heart"></i>
+      Add to wish list
+    </button>
   </div>
-</a>
+</div>

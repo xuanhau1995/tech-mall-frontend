@@ -18,11 +18,21 @@
     "importHelpers": true,
     "strictPropertyInitialization": false,
     "target": "es2017",
-    "module": "es2020",
+    "module": "ESNext",
     "lib": [
       "es2020",
-      "dom"
-    ]
+      "dom",
+      "es6"
+    ],
+    "paths": {
+      "@src/*": [
+          "src/*.android.ts",
+          "src/*.ios.ts",
+          "src/*.tns.ts",
+          "src/*.web.ts",
+          "src/*.ts"
+      ],
+  }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

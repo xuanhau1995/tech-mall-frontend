@@ -34,17 +34,35 @@
           <i class="fa-solid fa-magnifying-glass text-gray-300"></i>
         </div>
       </div>
-      <a
-        routerLink="/login"
-        class="h-[40px] rounded-md border border-white flex items-center hover:border-gray-300 px-2 cursor-pointer"
-      >
-        <i class="fa-solid fa-circle-user text-xl mr-2"></i>
-        <div>
-          <div class="text-[10px] font-light">Hello, Sign in</div>
-          <div class="text-sm font-semibold">Guest User</div>
-        </div>
-      </a>
 
+      <!-- User  -->
+      <div *ngIf="isLogined; else elseCheckLogin">
+        <a
+          routerLink="/profile"
+          class="h-[40px] rounded-md border border-white flex items-center hover:border-gray-300 px-2 cursor-pointer max-w-[130px]"
+        >
+          <i class="fa-solid fa-circle-user text-xl mr-2"></i>
+          <div>
+            <div class="text-[10px] font-light line-clamp-1">
+              Hello, {{ me?.fullname }}
+            </div>
+            <div class="text-sm font-semibold">Your Profile</div>
+          </div>
+        </a>
+      </div>
+      <ng-template #elseCheckLogin>
+        <a
+          routerLink="/login"
+          class="h-[40px] rounded-md border border-white flex items-center hover:border-gray-300 px-2 cursor-pointer"
+        >
+          <i class="fa-solid fa-circle-user text-xl mr-2"></i>
+          <div>
+            <div class="text-[10px] font-light">Hello, Sign in</div>
+            <div class="text-sm font-semibold">Guest User</div>
+          </div>
+        </a>
+      </ng-template>
+      <!-- End  -->
       <div
         class="flex items-center h-[40px] px-2 border border-white hover:border-gray-300 cursor-pointer rounded-md"
       >
@@ -62,7 +80,7 @@
             <div
               class="h-4 w-4 bg-red-500 rounded-full flex items-center justify-center text-white absolute top-0 text-[10px] left-[30%] border border-white"
             >
-              2
+              {{ currentValue }}
             </div>
             <i class="fa-solid fa-cart-shopping text-2xl"></i>
           </div>
