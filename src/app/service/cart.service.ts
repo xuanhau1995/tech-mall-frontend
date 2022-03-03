@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
+  baseUrl = 'https://tech-mall-api-ver2.herokuapp.com/api/cart'
   constructor(private http: HttpClient) {
 
   }
@@ -15,7 +16,7 @@ export class CartService {
   option = { headers: new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded") };
 
   getCartProduct(userId: any): Observable<any> {
-    return this.http.get(`${baseUrl}` + '/cart/get_list/' + userId)
+    return this.http.get(this.baseUrl + '/cart/get_list/' + userId)
   }
   addProductToCart(data: any): Observable<any> {
     let body = new URLSearchParams();
@@ -30,13 +31,13 @@ export class CartService {
     body.set('color', data.color)
     body.set('size', data.size)
 
-    return this.http.post(`${baseUrl}` + '/cart/add', body, this.option)
+    return this.http.post(this.baseUrl + '/cart/add', body, this.option)
   }
 
   removeProductCart(data: any) {
     let body = new URLSearchParams()
     body.set('id', data)
-    return this.http.post(`${baseUrl}` + '/cart/delete', body, this.option)
+    return this.http.post(this.baseUrl + '/cart/delete', body, this.option)
   }
 }
 

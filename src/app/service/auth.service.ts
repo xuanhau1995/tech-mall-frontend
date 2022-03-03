@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { baseUrl } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  baseUrl = 'https://tech-mall-api-ver2.herokuapp.com/api/user'
   constructor(private http: HttpClient) { }
   login(data: any): Observable<any> {
-    return this.http.post(`${baseUrl}/user/login`, data)
+    return this.http.post(this.baseUrl + '/login', data)
   }
 
   signUp(data: any): Observable<any> {
-    return this.http.post(`${baseUrl}` + '/user/sign-up', data)
+    return this.http.post(this.baseUrl + '/sign-up', data)
   }
 
   logout() { }
 
   me(id: any) {
-    return this.http.get(`${baseUrl}/user/info-user/` + id)
+    return this.http.get(this.baseUrl + "/info-user/" + id)
   }
 }
