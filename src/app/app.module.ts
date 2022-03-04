@@ -17,6 +17,10 @@ import { ProfileComponent } from './modules/profile/profile.component';
 import { OrderComponent } from './modules/order/order.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { SignUpComponent } from './modules/sign-up/sign-up.component';
+import { ChatComponent } from './shared/components/chat/chat.component';
+// Gọi socket io
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3100', options: {} };
 // Gọi store
 @NgModule({
   declarations: [
@@ -28,6 +32,7 @@ import { SignUpComponent } from './modules/sign-up/sign-up.component';
     OrderComponent,
     CartComponent,
     SignUpComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -38,6 +43,7 @@ import { SignUpComponent } from './modules/sign-up/sign-up.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SocketIoModule.forRoot(config),
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
   ],

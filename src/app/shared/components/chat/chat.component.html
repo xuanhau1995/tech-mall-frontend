@@ -1,7 +1,171 @@
+<svg class="animate-spin h-5 w-5" viewBox="0 0 24 24"></svg>
 <div class="fixed bottom-6 right-6">
   <div
-    class="bg-sky-700 h-14 w-14 rounded-full shadow-2xl backdrop-blur-md flex justify-center items-center cursor-pointer hover:scale-110 transition-all duration-500"
+    class="bg-sky-700 h-14 w-14 rounded-full shadow-2xl backdrop-blur-md flex justify-center items-center cursor-pointer hover:scale-110 transition-all duration-500 relative"
+    (click)="OpenChat()"
   >
     <i class="fa-solid fa-comment-dots text-3xl text-white"></i>
+    <span class="flex h-3 w-3 absolute top-0 right-0">
+      <span
+        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"
+      ></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+    </span>
+  </div>
+  <div
+    *ngIf="isOpenChat"
+    class="absolute bottom-0 right-16 w-[300px] bg-white p-4 rounded-xl shadow-2xl"
+  >
+    <div class="flex items-center justify-between">
+      <div class="font-semibold">Tech Mall Chat</div>
+      <button
+        class="h-[28px] w-[28px] bg-slate-100 rounded-full"
+        (click)="closeChat()"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div *ngIf="isFormSendContact" class="text-xs font-light">
+      You need to support! Please leave we a message!
+    </div>
+    <form *ngIf="isFormSendContact" name="formSendConatact" class="pt-4">
+      <h2 class="font-semibold text-xs pb-2">Your Name</h2>
+      <input
+        type="text"
+        placeholder="Your Name"
+        class="w-full border-slate-200 rounded-xl placeholder:text-slate-300 bg-slate-50 text-sm"
+        #name
+      />
+      <h2 class="font-semibold text-xs pb-2 pt-4">Email</h2>
+      <input
+        type="text"
+        placeholder="Email"
+        class="w-full border-slate-200 rounded-xl placeholder:text-slate-300 bg-slate-50 text-sm"
+        #email
+      />
+      <h2 class="font-semibold text-xs pb-2 pt-4">Phone</h2>
+      <input
+        type="text"
+        placeholder="Phone"
+        class="w-full border-slate-200 rounded-xl placeholder:text-slate-300 bg-slate-50 text-sm"
+        #phone
+      />
+      <div class="flex pt-3 space-x-3">
+        <input type="checkbox" class="border-slate-200 rounded-md mt-1" />
+        <div class="text-xs font-light">
+          by agreeing to TechMall's terms and agreements
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="w-full bg-slate-900 text-white rounded-full mt-6 h-[36px]"
+        (click)="sendFormContact(name, phone, email)"
+      >
+        <div *ngIf="loading; else elseLoading">
+          <div>
+            <svg
+              version="1.1"
+              id="L4"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 100 100"
+              enable-background="new 0 0 0 0"
+              xml:space="preserve"
+            >
+              <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
+                <animate
+                  attributeName="opacity"
+                  dur="1s"
+                  values="0;1;0"
+                  repeatCount="indefinite"
+                  begin="0.1"
+                />
+              </circle>
+              <circle fill="#fff" stroke="none" cx="26" cy="50" r="6">
+                <animate
+                  attributeName="opacity"
+                  dur="1s"
+                  values="0;1;0"
+                  repeatCount="indefinite"
+                  begin="0.2"
+                />
+              </circle>
+              <circle fill="#fff" stroke="none" cx="46" cy="50" r="6">
+                <animate
+                  attributeName="opacity"
+                  dur="1s"
+                  values="0;1;0"
+                  repeatCount="indefinite"
+                  begin="0.3"
+                />
+              </circle>
+            </svg>
+          </div>
+        </div>
+        <ng-template #elseLoading> Start to chat </ng-template>
+      </button>
+    </form>
+
+    <form *ngIf="isOpenScreenChat" name="formChat">
+      <div class="text-sm text-slate-600">A counselor closed this chat</div>
+      <div class="h-[300px] overflow-y-auto">
+        <div class="flex items-center space-x-2 pt-4 text-slate-400">
+          <div
+            class="h-[24px] w-[24px] border rounded-full flex justify-center items-center bg-slate-50"
+          >
+            <i class="fa-solid fa-user text-xs"></i>
+          </div>
+          <div class="text-xs italic">Online support</div>
+        </div>
+        <div class="text-xs p-3 bg-slate-50 rounded-xl mt-1">
+          Hello Hero, I as a consultant of Tech Mall, What can I do to help? me?
+        </div>
+        <ul class="flex justify-end pt-4">
+          <div>
+            <li *ngFor="let i of messArray" class="mb-2">
+              <div class="flex text-right items-center space-x-2 justify-end">
+                <div class="italic text-xs font-light text-right">
+                  {{ guestUserName }}
+                </div>
+                <div
+                  class="h-[24px] w-[24px] border rounded-full flex justify-center items-center bg-slate-50"
+                >
+                  <i class="fa-solid fa-user text-xs"></i>
+                </div>
+              </div>
+              <div class="mt-1 flex justify-end">
+                <span
+                  class="bg-opacity-10 rounded-xl p-2 bg-sky-700 text-sky-600 max-w-[340px] text-xs text-right inline-flex flex-wrap"
+                >
+                  {{ i?.message }}
+                </span>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+      <div class="pt-4">
+        <div
+          class="border h-[48px] bg-slate-50 rounded-full w-full flex pr-2 pl-2 items-center"
+        >
+          <input
+            type="text"
+            placeholder="Enter message..."
+            class="w-full bg-transparent border-0 flex flex-1 focus:border-0 focus:ring-0 placeholder:italic text-sm"
+            #message
+          />
+          <button
+            type="button"
+            class="h-8 w-8 flex justify-center items-center bg-sky-700 text-white rounded-full flex-0"
+            (click)="sendMessageChat(message)"
+          >
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

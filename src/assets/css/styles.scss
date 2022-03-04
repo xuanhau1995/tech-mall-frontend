@@ -6,6 +6,7 @@
 
 // regular style toast
 @import '~ngx-toastr/toastr';
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
 
 body {
   font-family: 'Montserrat';
@@ -43,4 +44,10 @@ button {
 .profile {
   min-height: calc(100vh - 460px);
 
+}
+
+svg {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
 }
