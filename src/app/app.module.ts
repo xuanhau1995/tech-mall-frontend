@@ -20,7 +20,7 @@ import { SignUpComponent } from './modules/sign-up/sign-up.component';
 import { ChatComponent } from './shared/components/chat/chat.component';
 // Gọi socket io
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-const config: SocketIoConfig = { url: 'http://localhost:3100', options: {} };
+const config: SocketIoConfig = { url: 'https://socket-io-tech-mall.herokuapp.com', options: {} };
 // Gọi store
 @NgModule({
   declarations: [
