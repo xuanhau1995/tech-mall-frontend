@@ -32,12 +32,20 @@ export class ChatComponent implements OnInit {
     this.getMessage()
       .subscribe((kq: any) => {
         this.messArray.push(kq)
-        // console.log(this.messArray)
+        const messJson = JSON.stringify(this.messArray)
+        localStorage.setItem('chat-mess', messJson)
         // const messagess = document.querySelector('#chat_items')
         // const chatItem = document.createElement('li')
         // chatItem.textContent = kq.message
         // messagess?.appendChild(chatItem)
       })
+
+    this.newMess()
+  }
+
+  // get mess from localStorage
+  newMess() {
+    this.messArray = JSON.parse(localStorage.getItem('chat-mess') || '')
   }
 
   OpenChat() {
@@ -93,8 +101,8 @@ export class ChatComponent implements OnInit {
 
   checkAction() {
     if (this.guestUserName) {
-      this.isOpenScreenChat = false
-      this.isFormSendContact = true
+      this.isOpenScreenChat = true
+      this.isFormSendContact = false
     }
   }
 

@@ -86,6 +86,7 @@ export class ProfileComponent implements OnInit {
     localStorage.removeItem('token_tech_mall')
     localStorage.removeItem('user_id')
     localStorage.removeItem('guestUserName')
+    localStorage.removeItem('chat-mess')
     window.location.reload()
     this.router.navigate(['/'])
     this.toastr.success('Logout Successfully');
