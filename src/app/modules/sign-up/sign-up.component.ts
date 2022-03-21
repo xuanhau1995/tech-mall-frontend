@@ -96,7 +96,8 @@ export class SignUpComponent implements OnInit {
           this.toastr.success('Sign Up Account Succesfully!')
         }
         if (data['kq'] === 0) {
-          this.toastr.error(data.error)
+          console.log(data)
+          this.toastr.error(data.err)
         }
       })
     }
